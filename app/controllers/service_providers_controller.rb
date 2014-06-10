@@ -26,9 +26,17 @@ class ServiceProvidersController < ApplicationController
 	end
 
 	def update
-		provider = ServiceProvider.find(params[:id])
-		provider.update(provider_params)
-		redirect_to service_provider_path(provider)
+		@provider = ServiceProvider.find(params[:id])
+		if @provider.update(provider_params)
+			redirect_to service_provider_path(@provider),
+					notice: "Service Provider updated successfully!"
+		else
+			@err = @provider.errors.full_messages
+			redirect_to edit_service_provider_path(@provider),
+					:flash => { notice: "Invalid. Service provider NOT updated.", 
+											errors: @err 
+										}
+		end
 	end
 
 	def destroy
