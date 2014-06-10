@@ -13,6 +13,14 @@
   <p>Contact Email: <%= @provider.contact_email %> </p>
   <p>Phone Number: <%= @provider.work_phone %> </p>
   <p>Fax: <%= @provider.fax %> </p>
+  
+  <p>Categories: </p>
+  	<ul>
+  		<% @categories.each do |c| %>
+  			<li><%= c.name %></li>
+  		<% end %>
+  	</ul>
+
   <p>Other: <%= @provider.other %> </p>
   <div class="sdate">
      <p>Created on <%= @provider.created_at.strftime("%D at %T %Z") %></p>

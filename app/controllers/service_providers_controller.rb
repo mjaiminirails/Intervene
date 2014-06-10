@@ -6,11 +6,16 @@ class ServiceProvidersController < ApplicationController
 
 	def new
 		@provider = ServiceProvider.new
+		@categories = ServiceCategory.all
 	end
 
 	def create
 		@provider = ServiceProvider.new(provider_params)
+		@category_ids = params[:categories]
 		if @provider.save
+			@category_ids.each do |cid|
+				@provider.service_categories << ServiceCategory.find_by(id: cid)
+			end
 			redirect_to service_provider_path(@provider)
 		else
 			render new_service_provider_path
@@ -19,10 +24,13 @@ class ServiceProvidersController < ApplicationController
 
 	def show
 		@provider = ServiceProvider.find(params[:id])
+		@categories = @provider.service_categories
 	end
 
 	def edit
 		@provider = ServiceProvider.find(params[:id])
+		@all_categories = ServiceCategory.all
+		@selected_cats = @provider.service_categories
 	end
 
 	def update

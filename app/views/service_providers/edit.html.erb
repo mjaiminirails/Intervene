@@ -15,8 +15,17 @@
   <p>Contact Email: <%= f.text_field :contact_email %></p>
   <p>Phone Number: <%= f.text_field :work_phone %></p>
   <p>Fax: <%= f.text_field :fax %></p>
-  <p>Other: <%= f.text_area :other %></p>
 
+  <p>Categories: </p>
+  <% @all_categories.each do |c| %>
+  	<% if @selected_cats.include?(c) %>
+	    <%= check_box_tag "categories[]", c.id, checked: :true %> <%= c.name%><br>
+    <% else %>
+	    <%= check_box_tag "categories[]", c.id %> <%= c.name%><br>
+		<% end %>    
+  <% end %>
+  
+  <p>Other: <%= f.text_area :other %></p>
 	<%= f.submit "Update provider!"%>
 <% end %>
 
