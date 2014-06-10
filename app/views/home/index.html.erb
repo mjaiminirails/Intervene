@@ -1,1 +1,15 @@
 you are in index.html.erb (home#index)
+
+<br><br>
+
+	
+	As AppUser: <br>
+	<% if app_user_signed_in? %>
+		Signed in as: <%= current_app_user.email %> <br>
+		<%= link_to "Sign Out", destroy_app_user_session_path, method: :delete %>
+	<% else %>	
+		<%= link_to "Sign Up", new_app_user_registration_path %> <br>
+		<%= link_to "Sign In", new_app_user_session_path %>
+	<% end %>
+	
+	
