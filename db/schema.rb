@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140609225748) do
+ActiveRecord::Schema.define(version: 20140610025246) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,5 +33,38 @@ ActiveRecord::Schema.define(version: 20140609225748) do
 
   add_index "app_users", ["email"], name: "index_app_users_on_email", unique: true, using: :btree
   add_index "app_users", ["reset_password_token"], name: "index_app_users_on_reset_password_token", unique: true, using: :btree
+
+  create_table "service_categories", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "service_categories_service_providers", force: true do |t|
+    t.integer "service_provider_id"
+    t.integer "service_category_id"
+  end
+
+  create_table "service_providers", force: true do |t|
+    t.string   "name"
+    t.string   "mission"
+    t.string   "image"
+    t.string   "remote_image_url"
+    t.string   "website"
+    t.string   "providers_email"
+    t.string   "contact_person"
+    t.string   "contact_email"
+    t.string   "street1"
+    t.string   "street2"
+    t.string   "city"
+    t.string   "state"
+    t.string   "zip_code"
+    t.string   "work_phone"
+    t.string   "fax"
+    t.string   "infraction_supported"
+    t.text     "other"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end
