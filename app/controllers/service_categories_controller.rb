@@ -26,9 +26,15 @@ class ServiceCategoriesController < ApplicationController
 	end
 
 	def update
-		category = ServiceCategory.find(params[:id])
-		category.update(category_params)
-		redirect_to service_category_path(category)
+		@category = ServiceCategory.find(params[:id])
+		if @category.update(category_params)
+			redirect_to service_category_path(@category), 
+						notice: "Category updated successfully!!"
+		else
+			@err = @category.errors.full_messages
+			redirect_to edit_service_category_path(@category), 
+						:flash => { notice: "Invalid. Category NOT updated.", errors: @err }
+		end
 	end
 
 	def destroy
