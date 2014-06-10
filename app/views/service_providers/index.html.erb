@@ -17,7 +17,7 @@
 		<td><%= link_to provider.name, service_provider_path(provider) %></td>
 		<td><%= provider.website%></td>
 		<td><%= link_to "Edit", edit_service_provider_path(provider) %></td>
-		<td><%= button_to "Delete", service_provider_path(provider),
+		<td><%= link_to "Delete", service_provider_path(provider),
 															method: :delete, 
 															data: { confirm: "Are you sure?"} %></td>
 	</tr>	

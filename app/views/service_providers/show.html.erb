@@ -10,7 +10,7 @@
 <%= link_to "Edit", edit_service_provider_path(@provider) %><br><br>
 
 
-<%= button_to "Delete this provider", 
+<%= link_to "Delete this provider", 
 				service_provider_path(@provider),
 				method: :delete, 
 				data: { confirm: "Are you sure?"} %>
