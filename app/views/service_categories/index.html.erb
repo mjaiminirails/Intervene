@@ -1,3 +1,4 @@
+<%= link_to "Go to HOME PAGE", root_path %><br><br>
 <h1>Service Categories </h1>
 
 <%= link_to "Add service category", new_service_category_path %>
@@ -15,7 +16,9 @@
 		<td><%= category.id %></td>
 		<td><%= link_to category.name, service_category_path(category) %></td>
 		<td><%= link_to "Edit", edit_service_category_path(category) %></td>
-		<td><%= link_to "Delete", 'www.google.com' %></td>
+		<td><%= link_to "Delete", service_category_path(category),
+															method: :delete, 
+															data: { confirm: "Are you sure?"} %></td>
 	</tr>	
 	<% end %>
 </table>

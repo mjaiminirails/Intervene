@@ -1,8 +1,12 @@
+<%= link_to "Go to HOME PAGE", root_path %><br><br>
+
 <div class="snippet">
-  <h1><%= @category.name %></h1>
+  <h1>Service Category Name: <%= @category.name %></h1>
 
   <div class="sdate">
      Created on <%= @category.created_at.strftime("%D at %T %Z") %>
   </div>
 
 </div>
+
+<%= link_to "Edit", edit_service_category_path(@category) %><br><br>

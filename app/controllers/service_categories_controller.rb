@@ -18,16 +18,22 @@ class ServiceCategoriesController < ActionController::Base
 	end
 
 	def show
-		@category = ServiceCategory.find_by(id: params[:id])
+		@category = ServiceCategory.find(params[:id])
 	end
 
 	def edit
+		@category = ServiceCategory.find(params[:id])
 	end
 
 	def update
+		category = ServiceCategory.find(params[:id])
+		category.update(category_params)
+		redirect_to service_category_path(category)
 	end
 
 	def destroy
+		category = ServiceCategory.find(params[:id])
+		category.destroy
 	end
 
 	def category_params
