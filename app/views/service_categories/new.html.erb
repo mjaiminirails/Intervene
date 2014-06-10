@@ -7,13 +7,13 @@
 <% end %>
 
 
-<%= form_for(@category) do |f| %>
+<%= form_for @category do |f| %>
 <h2>Create new service category</h2>
   <p>
     <%= f.label :name, "Category Name: " %>
     <%= f.text_field :name %><br><br>
   </p>
-  <%= f.submit %>
+  <%= f.submit "Create New Service Category" %>
 <% end %>
 
 
