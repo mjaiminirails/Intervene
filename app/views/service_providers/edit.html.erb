@@ -1,0 +1,17 @@
+<%= link_to "Go to HOME PAGE", root_path %><br><br>
+<h1>Edit Provider</h1>
+
+<%= form_for @provider do |f| %>
+	<p>
+		<%= f.label :name, "Provider Name: " %>
+		<%= f.text_field :name %>
+	</p>	
+	<%= f.submit "Update provider!"%>
+<% end %>
+
+<br><br>
+
+<%= button_to "Delete this provider", 
+				service_provider_path(@provider),
+				method: :delete, 
+				data: { confirm: "Are you sure?"} %>

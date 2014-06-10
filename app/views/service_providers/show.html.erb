@@ -1,0 +1,18 @@
+<%= link_to "Go to HOME PAGE", root_path %><br><br>
+
+<div class="snippet">
+  <h1>Service Provider Name: <%= @provider.name %></h1>
+
+  <div class="sdate">
+     Created on <%= @provider.created_at.strftime("%D at %T %Z") %>
+  </div>
+
+</div>
+
+<%= link_to "Edit", edit_service_provider_path(@provider) %><br><br>
+
+
+<%= button_to "Delete this provider", 
+				service_provider_path(@provider),
+				method: :delete, 
+				data: { confirm: "Are you sure?"} %>

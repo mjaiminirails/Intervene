@@ -1,0 +1,26 @@
+<%= link_to "Go to HOME PAGE", root_path %><br><br>
+<h1>Service Providers </h1>
+
+<%= link_to "Add service provider", new_service_provider_path %>
+<br><br>
+
+<table>
+	<tr>
+		<td>ID</td>
+		<td>Name</td>
+		<td>Website</td>
+		<td>Edit</td>
+		<td>Delete</td>
+	</tr>
+	<% @providers.each do |provider| %>
+	<tr>
+		<td><%= provider.id %></td>
+		<td><%= link_to provider.name, service_provider_path(provider) %></td>
+		<td><%= provider.website%></td>
+		<td><%= link_to "Edit", edit_service_provider_path(provider) %></td>
+		<td><%= button_to "Delete", service_provider_path(provider),
+															method: :delete, 
+															data: { confirm: "Are you sure?"} %></td>
+	</tr>	
+	<% end %>
+</table>
