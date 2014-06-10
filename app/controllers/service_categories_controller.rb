@@ -32,8 +32,11 @@ class ServiceCategoriesController < ActionController::Base
 	end
 
 	def destroy
+		p '=============='
+		p '=============='
 		category = ServiceCategory.find(params[:id])
 		category.destroy
+		redirect_to service_categories_path
 	end
 
 	def category_params
