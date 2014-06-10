@@ -1,4 +1,4 @@
-class ServiceCategoriesController < ActionController::Base
+class ServiceCategoriesController < ApplicationController
 
 	def index
 		@categories = ServiceCategory.all

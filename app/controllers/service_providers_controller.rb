@@ -1,4 +1,4 @@
-class ServiceProvidersController < ActionController::Base
+class ServiceProvidersController < ApplicationController
 
 	def index
 		@providers = ServiceProvider.all
