@@ -1,0 +1,19 @@
+<% if @category.errors.any? %>
+	<ul>
+	  <% @category.errors.full_messages.each do |error| %>
+	    <li class="error"><%= error %></li>
+	  <% end %>
+  </ul>
+<% end %>
+
+
+<%= form_for(@category) do |f| %>
+<h2>Create new service category</h2>
+  <p>
+    <%= f.label :name, "Category Name: " %>
+    <%= f.text_field :name %><br><br>
+  </p>
+  <%= f.submit %>
+<% end %>
+
+

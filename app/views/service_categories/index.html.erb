@@ -1,0 +1,21 @@
+<h1>Service Categories </h1>
+
+<%= link_to "Add service category", new_service_category_path %>
+<br><br>
+
+<table>
+	<tr>
+		<td>ID</td>
+		<td>Name</td>
+		<td>Edit</td>
+		<td>Delete</td>
+	</tr>
+	<% @categories.each do |category| %>
+	<tr>
+		<td><%= category.id %></td>
+		<td><%= link_to category.name, service_category_path(category) %></td>
+		<td><%= link_to "Edit", edit_service_category_path(category) %></td>
+		<td><%= link_to "Delete", 'www.google.com' %></td>
+	</tr>	
+	<% end %>
+</table>
