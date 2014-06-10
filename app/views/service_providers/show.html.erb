@@ -1,14 +1,25 @@
 <div class="snippet">
-  <h1>Service Provider Name: <%= @provider.name %></h1>
+  <h1>Service Provider Detail </h1>
 
+  <p>Organization's Name: <%= @provider.name %> </p>
+  <p>Mission Statement: <%= @provider.mission %> </p>
+  <p>Street 1: <%= @provider.street1 %> </p>
+  <p>Street 2: <%= @provider.street2 %> </p>
+  <p>City: <%= @provider.city %> </p>
+  <p>State: <%= @provider.state %> </p>
+  <p>Zip code: <%= @provider.zip_code %> </p>
+  <p>Website: <%= @provider.website %> </p>
+  <p>Contact Person: <%= @provider.contact_person %> </p>
+  <p>Contact Email: <%= @provider.contact_email %> </p>
+  <p>Phone Number: <%= @provider.work_phone %> </p>
+  <p>Fax: <%= @provider.fax %> </p>
+  <p>Other: <%= @provider.other %> </p>
   <div class="sdate">
-     Created on <%= @provider.created_at.strftime("%D at %T %Z") %>
+     <p>Created on <%= @provider.created_at.strftime("%D at %T %Z") %></p>
   </div>
-
 </div>
 
-<%= link_to "Edit", edit_service_provider_path(@provider) %><br><br>
-
+<%= link_to "Edit this provider", edit_service_provider_path(@provider) %><br><br>
 
 <%= link_to "Delete this provider", 
 				service_provider_path(@provider),

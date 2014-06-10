@@ -3,10 +3,20 @@
 <h1>Edit Provider</h1>
 
 <%= form_for @provider do |f| %>
-	<p>
-		<%= f.label :name, "Provider Name: " %>
-		<%= f.text_field :name %>
-	</p>	
+  <p>Organization's Name: <%= f.text_field :name %></p>
+  <p>Mission Statement: <%= f.text_field :mission %></p>
+  <p>Street 1: <%= f.text_field :street1 %></p>
+  <p>Street 2: <%= f.text_field :street2 %></p>
+  <p>City: <%= f.text_field :city %></p>
+  <p>State: <%= f.text_field :state %></p>
+  <p>Zip code: <%= f.text_field :zip_code %></p>
+  <p>Website: <%= f.text_field :website %></p>
+  <p>Contact Person: <%= f.text_field :contact_person %></p>
+  <p>Contact Email: <%= f.text_field :contact_email %></p>
+  <p>Phone Number: <%= f.text_field :work_phone %></p>
+  <p>Fax: <%= f.text_field :fax %></p>
+  <p>Other: <%= f.text_area :other %></p>
+
 	<%= f.submit "Update provider!"%>
 <% end %>
 

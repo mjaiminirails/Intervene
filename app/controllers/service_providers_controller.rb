@@ -42,11 +42,25 @@ class ServiceProvidersController < ApplicationController
 	def destroy
 		provider = ServiceProvider.find(params[:id])
 		provider.destroy
-		redirect_to service_categories_path
+		redirect_to service_providers_path
 	end
 
 	def provider_params
-    params.require(:service_provider).permit(:name)
+    params.require(:service_provider).
+    	permit( :name, 
+    					:mission,
+    					:street1,
+    					:street2,
+    					:city,
+    					:state,
+    					:zip_code,
+    					:website,
+    					:contact_person,
+    					:contact_email,
+    					:work_phone,
+    					:fax,
+    					:other
+    		)
   end
 
 end
