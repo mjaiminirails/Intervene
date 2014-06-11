@@ -62,6 +62,7 @@ ActiveRecord::Schema.define(version: 20140610025246) do
     t.string   "work_phone"
     t.string   "fax"
     t.string   "infraction_supported"
+    t.boolean  "published",            default: false
     t.text     "other"
     t.datetime "created_at"
     t.datetime "updated_at"
