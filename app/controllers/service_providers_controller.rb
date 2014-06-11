@@ -20,6 +20,7 @@ class ServiceProvidersController < ApplicationController
 			end
 			redirect_to service_provider_path(@provider)
 		else
+			@categories = ServiceCategory.order('name asc').all
 			render new_service_provider_path
 		end
 	end
