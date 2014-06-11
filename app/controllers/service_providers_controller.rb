@@ -1,20 +1,22 @@
 class ServiceProvidersController < ApplicationController
 
 	def index
-		@providers = ServiceProvider.all
+		@providers = ServiceProvider.order('name asc').all
 	end
 
 	def new
 		@provider = ServiceProvider.new
-		@categories = ServiceCategory.all
+		@categories = ServiceCategory.order('name asc').all
 	end
 
 	def create
 		@provider = ServiceProvider.new(provider_params)
 		@category_ids = params[:categories]
 		if @provider.save
-			@category_ids.each do |cid|
-				@provider.service_categories << ServiceCategory.find_by(id: cid)
+			if @category_ids
+				@category_ids.each do |cid|
+					@provider.service_categories << ServiceCategory.find_by(id: cid)
+				end
 			end
 			redirect_to service_provider_path(@provider)
 		else
@@ -24,12 +26,12 @@ class ServiceProvidersController < ApplicationController
 
 	def show
 		@provider = ServiceProvider.find(params[:id])
-		@categories = @provider.service_categories
+		@categories = @provider.service_categories.order('name asc')
 	end
 
 	def edit
 		@provider = ServiceProvider.find(params[:id])
-		@all_categories = ServiceCategory.all
+		@all_categories = ServiceCategory.order('name asc').all
 		@selected_cats = @provider.service_categories
 	end
 

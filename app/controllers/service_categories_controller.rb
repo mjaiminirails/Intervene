@@ -1,7 +1,7 @@
 class ServiceCategoriesController < ApplicationController
 
 	def index
-		@categories = ServiceCategory.all
+		@categories = ServiceCategory.order('name asc').all
 	end
 
 	def new
