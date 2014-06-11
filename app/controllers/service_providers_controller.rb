@@ -35,9 +35,18 @@ class ServiceProvidersController < ApplicationController
 
 	def update
 		@provider = ServiceProvider.find(params[:id])
-		if @provider.update(provider_params)
+		@category_ids = params[:categories]
+		if @provider.update(provider_params)			
+			@provider.service_categories.clear
+			if @category_ids
+				@category_ids.each do |cid|
+					@provider.service_categories << ServiceCategory.find_by(id: cid)
+				end
+			end
+
 			redirect_to service_provider_path(@provider),
 					notice: "Service Provider updated successfully!"
+		
 		else
 			@err = @provider.errors.full_messages
 			redirect_to edit_service_provider_path(@provider),
