@@ -24,8 +24,9 @@
 	    <%= check_box_tag "categories[]", c.id %> <%= c.name%><br>
 		<% end %>    
   <% end %>
-  
+
   <p>Other: <%= f.text_area :other %></p>
+  <p>Publish: <%= f.check_box :published %> </p>
 	<%= f.submit "Update provider!"%>
 <% end %>
 

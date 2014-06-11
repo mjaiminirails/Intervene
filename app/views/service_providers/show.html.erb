@@ -22,6 +22,8 @@
   	</ul>
 
   <p>Other: <%= @provider.other %> </p>
+  <p>Published: <%= @provider.published ? "Yes" : "No" %></p>
+  
   <div class="sdate">
      <p>Created on <%= @provider.created_at.strftime("%D at %T %Z") %></p>
   </div>

@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   root 'home#index'
 
   resources :service_providers
+  get '/all_service_providers', to: 'service_providers#allindex'
+
   resources :service_categories
 
   # Example of regular route:

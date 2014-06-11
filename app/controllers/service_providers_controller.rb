@@ -1,6 +1,10 @@
 class ServiceProvidersController < ApplicationController
 
 	def index
+		@providers = ServiceProvider.all.where(published: true)
+	end
+
+	def allindex
 		@providers = ServiceProvider.order('name asc').all
 	end
 
@@ -79,7 +83,8 @@ class ServiceProvidersController < ApplicationController
     					:contact_email,
     					:work_phone,
     					:fax,
-    					:other
+    					:other,
+    					:published
     		)
   end
 
