@@ -1,6 +1,7 @@
 development:
   adapter: postgresql
   encoding: unicode
+  host: localhost
   database: intervene_development
   pool: 5
   timeout: 5000
@@ -11,6 +12,7 @@ development:
 test:
   adapter: postgresql
   encoding: unicode
+  host: localhost
   database: intervene_test
   pool: 5
   timeout: 5000
