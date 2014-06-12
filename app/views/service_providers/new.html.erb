@@ -9,15 +9,16 @@
 
 <h2>Create new service provider</h2>
 
-<%= form_for @provider do |f| %>
+<%= form_for @provider, :html => {:multipart => true} do |f| %>
 
 <h3> Organization's information </h3>
 
 <!-- IMAGE UPLOAD -->
 
-  
+
   <p>Organization's Name: <%= f.text_field :name, placeholder: "Organization's name" %></p>
   <p>Mission Statement: <%= f.text_field :mission, placeholder: "Mission Statement" %></p>
+  <p>Logo/Image: <%= f.file_field :image, placeholder: "Logo" %></p>
   <p>Street 1: <%= f.text_field :street1, placeholder: "Street 1" %></p>
   <p>Street 2: <%= f.text_field :street2, placeholder: "Street 2" %></p>
   <p>City: <%= f.text_field :city, placeholder: "City" %></p>
@@ -28,7 +29,7 @@
   <p>Contact Email: <%= f.text_field :contact_email, placeholder: "Contact Email" %></p>
   <p>Phone Number: <%= f.text_field :work_phone, placeholder: "Phone Number" %></p>
   <p>Fax: <%= f.text_field :fax, placeholder: "Fax" %></p>
-  
+
   <p>Other: <%= f.text_area :other, placeholder: "Other" %></p>
   <p>Categories: </p>
     <% @categories.each do |c| %>

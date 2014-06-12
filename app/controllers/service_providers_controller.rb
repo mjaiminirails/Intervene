@@ -43,7 +43,7 @@ class ServiceProvidersController < ApplicationController
 	def update
 		@provider = ServiceProvider.find(params[:id])
 		@category_ids = params[:categories]
-		if @provider.update(provider_params)			
+		if @provider.update(provider_params)
 			@provider.service_categories.clear
 			if @category_ids
 				@category_ids.each do |cid|
@@ -53,12 +53,12 @@ class ServiceProvidersController < ApplicationController
 
 			redirect_to service_provider_path(@provider),
 					notice: "Service Provider updated successfully!"
-		
+
 		else
 			@err = @provider.errors.full_messages
 			redirect_to edit_service_provider_path(@provider),
-					:flash => { notice: "Invalid. Service provider NOT updated.", 
-											errors: @err 
+					:flash => { notice: "Invalid. Service provider NOT updated.",
+											errors: @err
 										}
 		end
 	end
@@ -71,8 +71,9 @@ class ServiceProvidersController < ApplicationController
 
 	def provider_params
     params.require(:service_provider).
-    	permit( :name, 
+    	permit( :name,
     					:mission,
+              :image,
     					:street1,
     					:street2,
     					:city,
