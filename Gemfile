@@ -40,3 +40,8 @@ gem 'spring',        group: :development
 
 gem 'devise'
 gem 'activeadmin', github: 'gregbell/active_admin'
+
+#allows for images to be resized and updated"
+gem 'rmagick', '2.13.2'
+gem 'carrierwave'
+gem 'mini_magick'

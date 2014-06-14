@@ -17,3 +17,7 @@
 
 .DS_Store
 /config/secrets.yml
+
+#Ignore notes file
+/notes
+
