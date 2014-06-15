@@ -37,7 +37,7 @@ class ServiceProvidersController < ApplicationController
 	def edit
 		@provider = ServiceProvider.find(params[:id])
 		@all_interventiontypes = InterventionType.order('name asc').all
-		@selected_cats = @provider.intervention_types
+		@selected_types = @provider.intervention_types
 	end
 
 	def update

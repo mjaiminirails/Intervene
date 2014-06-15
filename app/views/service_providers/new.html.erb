@@ -31,13 +31,10 @@
   <p>Fax: <%= f.text_field :fax, placeholder: "Fax" %></p>
 
   <p>Other: <%= f.text_area :other, placeholder: "Other" %></p>
-  <p>Categories: </p>
-    <% @categories.each do |c| %>
-      <%= check_box_tag "categories[]", c.id %> <%= c.name%><br>
+  <p>Intervention Type: </p>
+    <% @interventiontypes.each do |type| %>
+      <%= check_box_tag "interventiontypes[]", type.id %> <%= type.name%><br>
     <% end %>
-  <h5>QUESTIONS?</h5>
-  <p>- difference between providers email and contact email? </p>
-  <p>- Infraction supported: nothing text field yet. to be added</p>
 
   <%= f.submit "Create New Service Provider" %>
 
