@@ -10,44 +10,44 @@ class ServiceProvidersController < ApplicationController
 
 	def new
 		@provider = ServiceProvider.new
-		@categories = ServiceCategory.order('name asc').all
+		@interventiontypes = InterventionType.order('name asc').all
 	end
 
 	def create
 		@provider = ServiceProvider.new(provider_params)
-		@category_ids = params[:categories]
+		@interventiontype_ids = params[:interventiontypes]
 		if @provider.save
-			if @category_ids
-				@category_ids.each do |cid|
-					@provider.service_categories << ServiceCategory.find_by(id: cid)
+			if @interventiontype_ids
+				@interventiontype_ids.each do |type_id|
+					@provider.intervention_types << InterventionType.find_by(id: type_id)
 				end
 			end
 			redirect_to service_provider_path(@provider)
 		else
-			@categories = ServiceCategory.order('name asc').all
+			@interventiontypes = InterventionType.order('name asc').all
 			render new_service_provider_path
 		end
 	end
 
 	def show
 		@provider = ServiceProvider.find(params[:id])
-		@categories = @provider.service_categories.order('name asc')
+		@interventiontypes = @provider.intervention_types.order('name asc')
 	end
 
 	def edit
 		@provider = ServiceProvider.find(params[:id])
-		@all_categories = ServiceCategory.order('name asc').all
-		@selected_cats = @provider.service_categories
+		@all_interventiontypes = InterventionType.order('name asc').all
+		@selected_types = @provider.intervention_types
 	end
 
 	def update
 		@provider = ServiceProvider.find(params[:id])
-		@category_ids = params[:categories]
+		@interventiontype_ids = params[:interventiontypes]
 		if @provider.update(provider_params)
-			@provider.service_categories.clear
-			if @category_ids
-				@category_ids.each do |cid|
-					@provider.service_categories << ServiceCategory.find_by(id: cid)
+			@provider.intervention_types.clear
+			if @interventiontype_ids
+				@interventiontype_ids.each do |type_id|
+					@provider.intervention_types << InterventionType.find_by(id: type_id)
 				end
 			end
 

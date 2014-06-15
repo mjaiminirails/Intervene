@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   resources :service_providers
   get '/all_service_providers', to: 'service_providers#allindex'
 
-  resources :service_categories
+  resources :intervention_types
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

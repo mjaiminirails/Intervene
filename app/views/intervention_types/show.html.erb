@@ -1,0 +1,15 @@
+<div class="snippet">
+	<h1>Intervention Type Detail</h1>
+  <p><b>Name</b>: <%= @interventiontype.name %></p>
+  <p><b>Description</b>: <%= @interventiontype.description %></p>
+  <div class="sdate">
+     Created on <%= @interventiontype.created_at.strftime("%D at %T %Z") %>
+  </div>
+</div>
+
+<%= link_to "Edit", edit_intervention_type_path(@interventiontype) %><br><br>
+
+<%= link_to "Delete this intervention type", 
+				intervention_type_path(@interventiontype),
+				method: :delete, 
+				data: { confirm: "Are you sure?"} %>

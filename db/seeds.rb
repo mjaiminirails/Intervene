@@ -7,19 +7,17 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 
-#-------- SERVICE CATEGORIES ---------
-cat1 = ServiceCategory.create(name: 'Parent outreach')
-cat2 = ServiceCategory.create(name: 'Intervention by Counseling')
-cat3 = ServiceCategory.create(name: 'Guidance conference')
-cat4 = ServiceCategory.create(name: 'Restorative Approaches')
-cat5 = ServiceCategory.create(name: 'Mentoring Programs')
-cat6 = ServiceCategory.create(name: 'Peer Mediation')
+require 'csv'
+
+#-------- POPULATE INTERVENTION TYPES ---------
+CSV.foreach("./db/InterventionType.csv", :headers => true, :col_sep => "|") do |obj|
+	InterventionType.create(name: obj[0], description: obj[1])
+end
 
 #-------- SERVICE PROVIDERS ---------
-
 prov1 = ServiceProvider.create( name: 'Hidden Gems Archery', 
 												mission: 'to bring archery to the masses', 
-												remote_image_url:'http://www.hiddengemsarchery.com/wp-content/uploads/2013/02/cropped-Screen-Shot-2013-02-12-at-11.45.43-AM-e1360885247611.png',
+												# remote_image_url:'http://www.hiddengemsarchery.com/wp-content/uploads/2013/02/cropped-Screen-Shot-2013-02-12-at-11.45.43-AM-e1360885247611.png',
 												website: 'http://www.hiddengemsarchery.com/', 
 												contact_person: 'q', 
 												contact_email:'q@hga@aol.com', 
@@ -30,10 +28,7 @@ prov1 = ServiceProvider.create( name: 'Hidden Gems Archery',
 												zip_code:'10469', 
 												work_phone:'254-247-4477', 
 												fax:'', 
-												# infraction_supported:'',
 												other:'')
-
-prov1.service_categories << cat1 << cat4
 
 prov2 = ServiceProvider.create( name: 'Cardinal McCloskey' , 
 												mission: 'Our At-Risk Services’ mission is to promote a safe and nurturing environment for at-risk children and youth and the goal is to keep children safe, prevent abuse and strengthen biological families.', 
@@ -48,8 +43,15 @@ prov2 = ServiceProvider.create( name: 'Cardinal McCloskey' ,
 												zip_code:'10459', 
 												work_phone:'718-542-0255', 
 												fax:'', 
-												# infraction_supported:'', 
 												other:'')
-prov2.service_categories << cat1 << cat6
 
+
+# --- CREATE SAMPLE RELATIONSHIP BETWEEN SERVICE PROVIDER AND INTERVENTION TYPE ----
+type1 = InterventionType.all[1]
+type4 = InterventionType.all[4]
+type13 = InterventionType.all[13]
+
+
+prov1.intervention_types << type1 << type4
+prov2.intervention_types << type1 << type13
 

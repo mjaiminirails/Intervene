@@ -17,12 +17,12 @@
   <p>Phone Number: <%= f.text_field :work_phone %></p>
   <p>Fax: <%= f.text_field :fax %></p>
 
-  <p>Categories: </p>
-  <% @all_categories.each do |c| %>
-  	<% if @selected_cats.include?(c) %>
-	    <%= check_box_tag "categories[]", c.id, checked: :true %> <%= c.name%><br>
+  <p>Intervention Types: </p>
+  <% @all_interventiontypes.each do |type| %>
+  	<% if @selected_types.include?(type) %>
+	    <%= check_box_tag "interventiontypes[]", type.id, checked: :true %> <%= type.name%><br>
     <% else %>
-	    <%= check_box_tag "categories[]", c.id %> <%= c.name%><br>
+	    <%= check_box_tag "interventiontypes[]", type.id %> <%= type.name%><br>
 		<% end %>
   <% end %>
 
