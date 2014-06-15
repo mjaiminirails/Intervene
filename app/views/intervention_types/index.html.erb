@@ -1,0 +1,23 @@
+<h1>Intervention Type </h1>
+
+<%= link_to "Add intervention type", new_intervention_type_path %>
+<br><br>
+
+<table>
+	<tr>
+		<td>ID</td>
+		<td>Name</td>
+		<td>Edit</td>
+		<td>Delete</td>
+	</tr>
+	<% @interventiontypes.each do |intv_type| %>
+	<tr>
+		<td><%= intv_type.id %></td>
+		<td><%= link_to intv_type.name, intervention_type_path(intv_type) %></td>
+		<td><%= link_to "Edit", edit_intervention_type_path(intv_type) %></td>
+		<td><%= link_to "Delete", intervention_type_path(intv_type),
+															method: :delete, 
+															data: { confirm: "Are you sure?"} %></td>
+	</tr>	
+	<% end %>
+</table>

@@ -1,0 +1,17 @@
+<%= render "layouts/flasherror" %>
+
+<h1>Edit Intervention Type</h1>
+
+<%= form_for @interventiontype do |f| %>
+	<p>Intervention Type Name: <%= f.text_field :name %></p>
+	<p>Intervention Type Description: <%= f.text_area :description %></p>
+		
+	<%= f.submit "Update intervention type!"%>
+<% end %>
+
+<br><br>
+
+<%= link_to "Delete this intervention type", 
+				intervention_type_path(@interventiontype),
+				method: :delete, 
+				data: { confirm: "Are you sure?"} %>
