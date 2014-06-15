@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 20140610025246) do
     t.datetime "updated_at"
   end
 
-  create_table "intervention_types_providers", force: true do |t|
+  create_table "intervention_types_service_providers", force: true do |t|
     t.integer "service_provider_id"
     t.integer "intervention_type_id"
   end
