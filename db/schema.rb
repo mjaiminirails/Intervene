@@ -34,15 +34,16 @@ ActiveRecord::Schema.define(version: 20140610025246) do
   add_index "app_users", ["email"], name: "index_app_users_on_email", unique: true, using: :btree
   add_index "app_users", ["reset_password_token"], name: "index_app_users_on_reset_password_token", unique: true, using: :btree
 
-  create_table "service_categories", force: true do |t|
+  create_table "intervention_types", force: true do |t|
     t.string   "name"
+    t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "service_categories_providers", force: true do |t|
+  create_table "intervention_types_providers", force: true do |t|
     t.integer "service_provider_id"
-    t.integer "service_category_id"
+    t.integer "intervention_type_id"
   end
 
   create_table "service_providers", force: true do |t|
@@ -61,8 +62,7 @@ ActiveRecord::Schema.define(version: 20140610025246) do
     t.string   "zip_code"
     t.string   "work_phone"
     t.string   "fax"
-    t.string   "infraction_supported"
-    t.boolean  "published",            default: false
+    t.boolean  "published",        default: false
     t.text     "other"
     t.datetime "created_at"
     t.datetime "updated_at"
