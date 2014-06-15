@@ -3,6 +3,7 @@
 <h1>Edit Provider</h1>
 
 <%= form_for @provider do |f| %>
+  <p>Organization's Logo/Image: <%= f.file_field :image, placeholder: "Logo" %> </p>
   <p>Organization's Name: <%= f.text_field :name %></p>
   <p>Mission Statement: <%= f.text_field :mission %></p>
   <p>Street 1: <%= f.text_field :street1 %></p>
@@ -16,13 +17,13 @@
   <p>Phone Number: <%= f.text_field :work_phone %></p>
   <p>Fax: <%= f.text_field :fax %></p>
 
-  <p>Categories: </p>
-  <% @all_categories.each do |c| %>
-  	<% if @selected_cats.include?(c) %>
-	    <%= check_box_tag "categories[]", c.id, checked: :true %> <%= c.name%><br>
+  <p>Intervention Types: </p>
+  <% @all_interventiontypes.each do |type| %>
+  	<% if @selected_types.include?(type) %>
+	    <%= check_box_tag "interventiontypes[]", type.id, checked: :true %> <%= type.name%><br>
     <% else %>
-	    <%= check_box_tag "categories[]", c.id %> <%= c.name%><br>
-		<% end %>    
+	    <%= check_box_tag "interventiontypes[]", type.id %> <%= type.name%><br>
+		<% end %>
   <% end %>
 
   <p>Other: <%= f.text_area :other %></p>
@@ -32,7 +33,7 @@
 
 <br><br>
 
-<%= link_to "Delete this provider", 
+<%= link_to "Delete this provider",
 				service_provider_path(@provider),
-				method: :delete, 
+				method: :delete,
 				data: { confirm: "Are you sure?"} %>

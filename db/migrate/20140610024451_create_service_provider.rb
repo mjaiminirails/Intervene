@@ -16,7 +16,6 @@ class CreateServiceProvider < ActiveRecord::Migration
     	t.string :zip_code
     	t.string :work_phone
     	t.string :fax
-    	t.string :infraction_supported
         t.boolean :published, default: false
     	t.text :other
     	t.timestamps

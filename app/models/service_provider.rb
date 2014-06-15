@@ -1,4 +1,6 @@
 class ServiceProvider < ActiveRecord::Base
-	has_and_belongs_to_many :service_categories
+	has_and_belongs_to_many :intervention_types
 	validates :name, :presence => true
+
+  mount_uploader :image, ImageUploader
 end

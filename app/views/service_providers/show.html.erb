@@ -1,6 +1,7 @@
 <div class="snippet">
   <h1>Service Provider Detail </h1>
 
+  <p>Organization's Logo: <%= image_tag @provider.image_url(:medium).to_s %> </p>
   <p>Organization's Name: <%= @provider.name %> </p>
   <p>Mission Statement: <%= @provider.mission %> </p>
   <p>Street 1: <%= @provider.street1 %> </p>
@@ -13,17 +14,17 @@
   <p>Contact Email: <%= @provider.contact_email %> </p>
   <p>Phone Number: <%= @provider.work_phone %> </p>
   <p>Fax: <%= @provider.fax %> </p>
-  
-  <p>Categories: </p>
+
+  <p>Intervention Type: </p>
   	<ul>
-  		<% @categories.each do |c| %>
-  			<li><%= c.name %></li>
+  		<% @interventiontypes.each do |type| %>
+  			<li><%= type.name %></li>
   		<% end %>
   	</ul>
 
   <p>Other: <%= @provider.other %> </p>
   <p>Published: <%= @provider.published ? "Yes" : "No" %></p>
-  
+
   <div class="sdate">
      <p>Created on <%= @provider.created_at.strftime("%D at %T %Z") %></p>
   </div>
@@ -31,7 +32,7 @@
 
 <%= link_to "Edit this provider", edit_service_provider_path(@provider) %><br><br>
 
-<%= link_to "Delete this provider", 
+<%= link_to "Delete this provider",
 				service_provider_path(@provider),
-				method: :delete, 
+				method: :delete,
 				data: { confirm: "Are you sure?"} %>

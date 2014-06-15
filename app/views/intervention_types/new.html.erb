@@ -1,0 +1,18 @@
+<% if @interventiontype.errors.any? %>
+	<ul>
+	  <% @interventiontype.errors.full_messages.each do |error| %>
+	    <li class="error"><%= error %></li>
+	  <% end %>
+  </ul>
+<% end %>
+
+
+<h2>Create New Intervention Type</h2>
+
+<%= form_for @interventiontype do |f| %>
+  <p>Intervention Type Name: <%= f.text_field :name %></p>
+  <p>Intervention Type Description: <%= f.text_area :description %></p>
+  <%= f.submit "Create New Intervention Type" %>
+<% end %>
+
+
