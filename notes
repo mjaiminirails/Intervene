@@ -90,15 +90,17 @@ sc4
 
 ##creating a migration removine the primary key column
 
- 3548  rails generate migration remove_id_from_intervention_types_service_providers
+ $  rails generate migration remove_id_from_intervention_types_service_providers
 
+
+> db>migrate> 20140616050113_remove_id_from_intervention_types_service_providers
  class RemoveIdFromInterventionTypesServiceProviders < ActiveRecord::Migration
   def change
     remove_column :intervention_types_service_providers, :id, :integer
   end
 end
 
- 3549  rake db:migrate
+ $ rake db:migrate
 
 in db>schema.rb
 
