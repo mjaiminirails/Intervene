@@ -5,6 +5,13 @@
   <div class="sdate">
      Created on <%= @category.created_at.strftime("%D at %T %Z") %>
   </div>
+
+   <p>Subcategories: </p>
+    <ul>
+      <% @subcategories.each do |subcategory| %>
+        <li><%= subcategory.name rescue nil%></li>
+      <% end %>
+
 </div>
 
 <%= link_to "Edit", edit_category_path(@category) %><br><br>

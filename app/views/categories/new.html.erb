@@ -12,5 +12,10 @@
 <%= form_for @category do |f| %>
   <p>Category Name: <%= f.text_field :name %></p>
 
+    <p>Subcategory : </p>
+    <% @subcategories.each do |subcategory| %>
+      <%= check_box_tag "subcategories[]", subcategory.id %> <%= subcategory.name%><br>
+    <% end %>
+
   <%= f.submit "Create Category" %>
 <% end %>

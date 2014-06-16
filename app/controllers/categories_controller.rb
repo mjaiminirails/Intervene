@@ -6,6 +6,7 @@ class CategoriesController < ApplicationController
 
   def new
     @category = Category.new
+    @subcategories = Subcategory.all
   end
 
   def create
@@ -19,6 +20,7 @@ class CategoriesController < ApplicationController
 
   def show
     @category = Category.find(params[:id])
+    @subcategories = Subcategory.all
   end
 
   def edit
