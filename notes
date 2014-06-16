@@ -2,3 +2,90 @@
 This is when your server doesn't want to die.
 $ lsof -wni tcp:3000
 $ kill -9 5946
+
+
+###General wireframe
+
+![alt letsinterveneframes](http://i60.tinypic.com/11cf7e8.jpg "LetsInterveneFrames")
+This is how you do it within md (look up)
+
+#################
+
+[todo] Service Category
+
+sc1. Academic Support
+ - reading
+ - writing
+ - math
+ - science
+ - social studies
+ - advance courses
+
+sc2. Art
+ - music
+ - theater
+ - fine art
+ - dance
+
+
+sc3. Sports
+  - basketball
+  - softball
+  - swimming
+  - archery
+  - volleyball
+  - track
+
+sc4. Counseling
+ - individual
+ - group
+ - bullying
+ - youth relationship
+ - sexual violence
+ - substance abuse
+ - intimidation
+ - harrasment
+
+ sc5. Mentoring
+
+
+intervention_types-service_categories
+
+Int 2 - another module
+Int 3 - another module
+Int 4 - another module
+Int 5 - another module
+Int 6 - school provides it; another module
+Int 7 - this is internal
+Int 8 - Referral to a Community Based Organization
+sc1, sc2, sc3
+
+Int 9 - Referral to Appropriate Substance Abuse Counseling Services|
+sc4
+
+Int 10 - Individual/Group Counseling
+sc4
+
+Int 11 - another module
+
+
+Int 12 - Mentoring Program
+sc5
+
+Int 13 - Another module
+
+Int 14 - Referral to Counseling Services for Bias-Based Bullying, Intimidation or Harassment
+sc4
+
+Int 15 - Referral to Counseling Services for Youth Relationship Abuse or Sexual Violence|
+sc4
+
+
+### git information
+ 3540  git fetch origin
+ 3541  git push service master
+ 3542  git push -u origin service
+ 3543  git fetch origin
+
+
+
