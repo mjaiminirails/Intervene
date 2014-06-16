@@ -1,7 +1,7 @@
 class CategoriesController < ApplicationController
 
   def index
-    @Categories = Category.order('name asc').all
+    @categories = Category.order('name asc').all
   end
 
   def new

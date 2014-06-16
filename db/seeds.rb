@@ -46,3 +46,12 @@ type13 = InterventionType.all[13]
 prov1.intervention_types << type1 << type4
 prov2.intervention_types << type1 << type13
 
+# --- CREATE CATEGORY----
+cat1 = Category.create(name: 'Academic Support')
+
+# -- CREATE SUBCATEGORY ---
+subcat1 = Subcategory.create(name: 'Art')
+
+# -- CREATE SAMPLE RELATIONSHIP BETWEEN CATEGORY AND SUBCATEGORY --
+
+cat1.subcategories << subcat1
