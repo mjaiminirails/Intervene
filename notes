@@ -88,4 +88,22 @@ sc4
  3543  git fetch origin
 
 
+##creating a migration removine the primary key column
+
+ 3548  rails generate migration remove_id_from_intervention_types_service_providers
+
+ class RemoveIdFromInterventionTypesServiceProviders < ActiveRecord::Migration
+  def change
+    remove_column :intervention_types_service_providers, :id, :integer
+  end
+end
+
+ 3549  rake db:migrate
+
+in db>schema.rb
+
+  create_table "intervention_types_service_providers", id: false, force: true do |t|
+    t.integer "service_provider_id"
+    t.integer "intervention_type_id"
+  end
 
