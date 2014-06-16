@@ -11,6 +11,8 @@ Rails.application.routes.draw do
 
   resources :intervention_types
 
+  resources :categories
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

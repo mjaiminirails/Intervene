@@ -1,0 +1,15 @@
+<div class="snippet">
+  <h1>Category Detail</h1>
+  <p><b>Name</b>: <%= @category.name %></p>
+
+  <div class="sdate">
+     Created on <%= @category.created_at.strftime("%D at %T %Z") %>
+  </div>
+</div>
+
+<%= link_to "Edit", edit_category_path(@category) %><br><br>
+
+<%= link_to "Delete this intervention type",
+        category_path(@category),
+        method: :delete,
+        data: { confirm: "Are you sure?"} %>
