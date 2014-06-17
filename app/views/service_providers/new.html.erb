@@ -9,13 +9,11 @@
 
 <h2>Create new service provider</h2>
 
-<%= form_for @provider, :html => {:multipart => true} do |f| %>
+<%= form_for (@provider), :html => {:multipart => true} do |f| %>
 
 <h3> Organization's information </h3>
 
 <!-- IMAGE UPLOAD -->
-
-
   <p>Organization's Name: <%= f.text_field :name, placeholder: "Organization's name" %></p>
   <p>Mission Statement: <%= f.text_field :mission, placeholder: "Mission Statement" %></p>
   <p>Logo/Image: <%= f.file_field :image, placeholder: "Logo" %></p>
@@ -31,10 +29,19 @@
   <p>Fax: <%= f.text_field :fax, placeholder: "Fax" %></p>
 
   <p>Other: <%= f.text_area :other, placeholder: "Other" %></p>
-  <p>Intervention Type: </p>
-    <% @interventiontypes.each do |type| %>
-      <%= check_box_tag "interventiontypes[]", type.id %> <%= type.name%><br>
-    <% end %>
+
+
+  <p>Category </p>
+    <% Category.all.each do |category| %>
+
+  <li><%= check_box_tag "[categories][]", category.id, false, :id => "category_id_#{category.id}" %>
+    <%= category.name%> </br>
+
+   <% category.subcategories.each do |subcategory| %>
+<%= check_box_tag "[subcategories][]", subcategory.id, false, :id => "subcategory_id_#{subcategory.id}" %> <%= subcategory.name%> </li>
+   <% end %>
+
+    <% end %></br>
 
   <%= f.submit "Create New Service Provider" %>
 

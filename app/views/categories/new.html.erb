@@ -14,7 +14,9 @@
 
     <p>Subcategory : </p>
     <% @subcategories.each do |subcategory| %>
-      <%= check_box_tag "subcategories[]", subcategory.id %> <%= subcategory.name%><br>
+
+      <%= check_box_tag "category[subcategories][]", subcategory.id, false, :id => "subcategory_id_#{subcategory.id}" %> <%= subcategory.name%><br>
+
     <% end %>
 
   <%= f.submit "Create Category" %>

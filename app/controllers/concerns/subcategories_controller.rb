@@ -1,1 +1,0 @@
-subcategories_controller.rb
