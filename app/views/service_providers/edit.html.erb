@@ -19,7 +19,7 @@
 
   <p>Category </p>
   <% @all_categories.each do |category| %>
-    <strong><%= category.name %></strong><br>
+    <strong><%= category.name %></strong> -- add "select all" button here!<br>
     <% category.subcategories.each do |subcat| %>
     	<% if @selected_subcategories.include?(subcat) %>
   	    <%= check_box_tag "subcategories[]", subcat.id, checked: :true %> <%= subcat.name%><br>

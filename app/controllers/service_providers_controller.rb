@@ -59,12 +59,12 @@ class ServiceProvidersController < ApplicationController
 	def update
 		@provider = ServiceProvider.find(params[:id])
 
-    @category_ids = params[:categories]
+    @subcategory_ids = params[:subcategories]
     if @provider.update(provider_params)
-      @provider.categories.clear
-      if @category_ids
-        @category_ids.each do |category_id|
-          @provider.categories << Category.find_by(id: category_id)
+      @provider.subcategories.clear
+      if @subcategory_ids
+        @subcategory_ids.each do |subcategory_id|
+          @provider.subcategories << Subcategory.find_by(id: subcategory_id)
         end
       end
 
