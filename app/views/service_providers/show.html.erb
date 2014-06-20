@@ -16,14 +16,17 @@
   <p>Fax: <%= @provider.fax %> </p>
 
   <p>Category: </p>
-  	<ul>
-  		<% @categories.each do |category| %>
-  			<li><%= category.name %></li>
-         <%  category.subcategories.each do |subcategory| %>
-        <li> -- <%= subcategory.name %> </li>
+    <ul>
+      <% @categories.each do |category| %>
+        <li><%= category.name %></li>
+         <% @subcategories.each do |subcat| %>
+          <% if subcat.category == category %>
+            <li> -- <%= subcat.name %> </li>
+          <% end %>    
         <% end %>
-  		<% end %>
-  	</ul>
+      <% end %>
+    </ul>
+
 
 
   <p>Other: <%= @provider.other %> </p>

@@ -20,7 +20,7 @@ class CategoriesController < ApplicationController
 
   def show
     @category = Category.find(params[:id])
-    @subcategories = Subcategory.all
+    @subcategories = @category.subcategories
   end
 
   def edit

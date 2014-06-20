@@ -2,7 +2,7 @@ class ServiceProvidersController < ApplicationController
 
 	def index
 		@providers = ServiceProvider.all.where(published: true)
-    @categories = Category.all
+    # @categories = Category.all
 	end
 
 	def allindex
@@ -45,14 +45,15 @@ class ServiceProvidersController < ApplicationController
 
 	def show
 		@provider = ServiceProvider.find(params[:id])
-    @categories = @provider.categories.order('name asc')
-
+    # @categories = @provider.categories.order('name asc')
+    @subcategories = @provider.subcategories.order('category_id')
+    @categories = @provider.uniq_categories
 	end
 
 	def edit
 		@provider = ServiceProvider.find(params[:id])
 		@all_categories = Category.order('name asc').all
-		@selected_categories = @provider.categories
+		@selected_subcategories = @provider.subcategories
 	end
 
 	def update

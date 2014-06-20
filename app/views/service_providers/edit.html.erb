@@ -19,12 +19,14 @@
 
   <p>Category </p>
   <% @all_categories.each do |category| %>
-  	<% if @selected_categories.include?(category) %>
-	    <%= check_box_tag "categories[]", category.id, checked: :true %> <%= category.name%><br>
-
-    <% else %>
-	    <%= check_box_tag "categories[]", category.id %> <%= category.name%><br>
-		<% end %>
+    <strong><%= category.name %></strong><br>
+    <% category.subcategories.each do |subcat| %>
+    	<% if @selected_subcategories.include?(subcat) %>
+  	    <%= check_box_tag "subcategories[]", subcat.id, checked: :true %> <%= subcat.name%><br>
+      <% else %>
+  	    <%= check_box_tag "subcategories[]", subcat.id %> <%= subcat.name%><br>
+  		<% end %> 
+    <% end %>
   <% end %>
 
   <p>Other: <%= f.text_area :other %></p>
