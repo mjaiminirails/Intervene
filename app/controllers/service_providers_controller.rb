@@ -17,25 +17,13 @@ class ServiceProvidersController < ApplicationController
 
 	def create
 		@provider = ServiceProvider.new(provider_params)
-    @category_ids = params[:categories]
     @subcategory_ids = params[:subcategories]
-
-     if @provider.save
-       if @category_ids
-
-         @category_ids.each do |category_id|
-
-            @provider.categories << Category.find_by(id: category_id)
-             if @subcategory_ids
-
-              @subcategory_ids.each do |subcategory_id|
-               Category.find_by(id: category_id).subcategories << Subcategory.find_by(id: subcategory_id)
-             end
-            end
-          end
-       end
-
-
+    if @provider.save
+      if @subcategory_ids
+        @subcategory_ids.each do |subcategory_id|
+          @provider.subcategories << Subcategory.find_by(id: subcategory_id)
+        end
+      end
 		redirect_to service_provider_path(@provider)
 		else
       @category = Category.order('name asc').all
@@ -45,7 +33,6 @@ class ServiceProvidersController < ApplicationController
 
 	def show
 		@provider = ServiceProvider.find(params[:id])
-    # @categories = @provider.categories.order('name asc')
     @subcategories = @provider.subcategories.order('category_id')
     @categories = @provider.uniq_categories
 	end

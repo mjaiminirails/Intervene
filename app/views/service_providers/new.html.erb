@@ -33,14 +33,14 @@
 
   <p>Category </p>
     <% Category.all.each do |category| %>
-
-  <li><%= check_box_tag "[categories][]", category.id, false, :id => "category_id_#{category.id}" %>
-    <%= category.name%> </br>
-
-   <% category.subcategories.each do |subcategory| %>
-<%= check_box_tag "[subcategories][]", subcategory.id, false, :id => "subcategory_id_#{subcategory.id}" %> <%= subcategory.name%> </li>
-   <% end %>
-
+      <%= category.name%> </br>
+      <% category.subcategories.each do |subcategory| %>
+        <%= check_box_tag "[subcategories][]",  
+                          subcategory.id, 
+                          false, 
+                          :id => "subcategory_id_#{subcategory.id}" %> 
+        <%= subcategory.name%> <br>
+      <% end %>
     <% end %></br>
 
   <%= f.submit "Create New Service Provider" %>
