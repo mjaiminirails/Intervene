@@ -2,6 +2,7 @@ class ServiceProvidersController < ApplicationController
 
 	def index
 		@providers = ServiceProvider.all.where(published: true)
+    @categories = Category.all
 	end
 
 	def allindex
@@ -10,46 +11,64 @@ class ServiceProvidersController < ApplicationController
 
 	def new
 		@provider = ServiceProvider.new
-		@interventiontypes = InterventionType.order('name asc').all
+    @categories = Category.order('name asc').all
+    @subcategories = Subcategory.order('name asc').all
 	end
 
 	def create
 		@provider = ServiceProvider.new(provider_params)
-		@interventiontype_ids = params[:interventiontypes]
-		if @provider.save
-			if @interventiontype_ids
-				@interventiontype_ids.each do |type_id|
-					@provider.intervention_types << InterventionType.find_by(id: type_id)
-				end
-			end
-			redirect_to service_provider_path(@provider)
+    @category_ids = params[:categories]
+    @subcategory_ids = params[:subcategories]
+
+     if @provider.save
+       if @category_ids
+
+         @category_ids.each do |category_id|
+
+            @provider.categories << Category.find_by(id: category_id)
+             if @subcategory_ids
+
+              @subcategory_ids.each do |subcategory_id|
+               Category.find_by(id: category_id).subcategories << Subcategory.find_by(id: subcategory_id)
+             end
+            end
+          end
+       end
+
+
+		redirect_to service_provider_path(@provider)
 		else
-			@interventiontypes = InterventionType.order('name asc').all
+      @category = Category.order('name asc').all
 			render new_service_provider_path
 		end
 	end
 
 	def show
 		@provider = ServiceProvider.find(params[:id])
-		@interventiontypes = @provider.intervention_types.order('name asc')
+    @categories = @provider.categories.order('name asc')
+
 	end
 
 	def edit
 		@provider = ServiceProvider.find(params[:id])
-		@all_interventiontypes = InterventionType.order('name asc').all
-		@selected_types = @provider.intervention_types
+		@all_categories = Category.order('name asc').all
+		@selected_categories = @provider.categories
 	end
 
 	def update
 		@provider = ServiceProvider.find(params[:id])
-		@interventiontype_ids = params[:interventiontypes]
-		if @provider.update(provider_params)
-			@provider.intervention_types.clear
-			if @interventiontype_ids
-				@interventiontype_ids.each do |type_id|
-					@provider.intervention_types << InterventionType.find_by(id: type_id)
-				end
-			end
+
+    @category_ids = params[:categories]
+    if @provider.update(provider_params)
+      @provider.categories.clear
+      if @category_ids
+        @category_ids.each do |category_id|
+          @provider.categories << Category.find_by(id: category_id)
+        end
+      end
+
+
+
 
 			redirect_to service_provider_path(@provider),
 					notice: "Service Provider updated successfully!"

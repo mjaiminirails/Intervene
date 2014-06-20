@@ -88,4 +88,92 @@ sc4
  3543  git fetch origin
 
 
+##creating a migration removine the primary key column
 
+ $  rails generate migration remove_id_from_intervention_types_service_providers
+
+
+> db>migrate> 20140616050113_remove_id_from_intervention_types_service_providers
+ class RemoveIdFromInterventionTypesServiceProviders < ActiveRecord::Migration
+  def change
+    remove_column :intervention_types_service_providers, :id, :integer
+  end
+end
+
+ $ rake db:migrate
+
+in db>schema.rb
+
+  create_table "intervention_types_service_providers", id: false, force: true do |t|
+    t.integer "service_provider_id"
+    t.integer "intervention_type_id"
+  end
+
+
+
+
+### 06/16/14 taking out of Service_providers/new
+## changing the Intervention type section
+
+  <p>Organization's Name: <%= f.text_field :name, placeholder: "Organization's name" %></p>
+  <p>Mission Statement: <%= f.text_field :mission, placeholder: "Mission Statement" %></p>
+  <p>Logo/Image: <%= f.file_field :image, placeholder: "Logo" %></p>
+  <p>Street 1: <%= f.text_field :street1, placeholder: "Street 1" %></p>
+  <p>Street 2: <%= f.text_field :street2, placeholder: "Street 2" %></p>
+  <p>City: <%= f.text_field :city, placeholder: "City" %></p>
+  <p>State: <%= f.text_field :state, placeholder: "State" %></p>
+  <p>Zip code: <%= f.text_field :zip_code, placeholder: "Zip Code" %></p>
+  <p>Website: <%= f.text_field :website, placeholder: "Website" %></p>
+  <p>Contact Person: <%= f.text_field :contact_person, placeholder: "Contact Person" %></p>
+  <p>Contact Email: <%= f.text_field :contact_email, placeholder: "Contact Email" %></p>
+  <p>Phone Number: <%= f.text_field :work_phone, placeholder: "Phone Number" %></p>
+  <p>Fax: <%= f.text_field :fax, placeholder: "Fax" %></p>
+
+  <p>Other: <%= f.text_area :other, placeholder: "Other" %></p>
+  <p>Intervention Type: </p>
+    <% @interventiontypes.each do |type| %>
+      <%= check_box_tag "interventiontypes[]", type.id %> <%= type.name%><br>
+    <% end %>
+
+  <%= f.submit "Create New Service Provider" %>
+
+<% end %>
+
+
+   @subcategories = Subcategory.where(:category_id => :subcategory_id)
+
+
+
+
+  def create
+    @provider = ServiceProvider.new(provider_params)
+    @category_ids = params[:categories]
+    @subcategory_ids = params[:subcategories]
+     if @provider.save
+       if @category_ids
+         @category_ids.each do |category_id|
+           @provider.categories << Category.find_by(id: category_id)
+        @subcategory_ids.each do |subcategory_id|
+          @categories.subcategories << Subcategory.find_by(id: subcategory_id)
+        end
+      end
+
+
+
+  <p>Category </p>
+  <% @all_categories.each do |category| %>
+    <% if @selected_categories.include?(category) %>
+
+      <%= check_box_tag "categories[]", category.id, checked: :true %> <%= category.name%><br>
+
+
+ <% category.subcategories.each do |subcategory| %>
+
+<% if @selected_subcategories.include?(subcategory) %>
+<%= check_box_tag "[subcategories][]", subcategory.id, false, :id => "subcategory_id_#{subcategory.id}" %> <%= subcategory.name%> </li>
+
+
+    <% else %>
+      <%= check_box_tag "categories[]", category.id %> <%= category.name%><br>
+    <% end %>
+  <% end %>

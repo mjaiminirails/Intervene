@@ -1,0 +1,17 @@
+<%= render "layouts/flasherror" %>
+
+<h1>Edit Category </h1>
+
+<%= form_for @category do |f| %>
+  <p>Category Name: <%= f.text_field :name %></p>
+
+
+  <%= f.submit "Update category!"%>
+<% end %>
+
+<br><br>
+
+<%= link_to "Delete this category",
+        category_path(@category),
+        method: :delete,
+        data: { confirm: "Are you sure?"} %>
