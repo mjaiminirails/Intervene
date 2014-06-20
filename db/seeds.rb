@@ -69,8 +69,8 @@ category3 = Category.all[2]
 category4 = Category.all[3]
 category5 = Category.all[4]
 
-prov1.categories << category1 << category2
-prov2.categories << category1 << category5
+# prov1.categories << category1 << category2
+# prov2.categories << category1 << category5
 
 # -- CREATE SUBCATEGORY ---
 #Academic Support (cat1)
@@ -109,7 +109,7 @@ subcat23 = Subcategory.all[22]
 #Mentoring #5
 subcat24 = Subcategory.all[23]
 
-# -- CREATE SAMPLE RELATIONSHIP BETWEEN CATEGORY AND SUBCATEGORY --
+# # -- CREATE SAMPLE RELATIONSHIP BETWEEN CATEGORY AND SUBCATEGORY --
 
 category1.subcategories << subcat1 << subcat2 << subcat3 <<subcat4 << subcat5 << subcat6
 
@@ -122,32 +122,32 @@ category4.subcategories << subcat16 << subcat17 << subcat18 << subcat19 << subca
 category5.subcategories << subcat24
 
 
-# --- CREATE SAMPLE RELATIONSHIP CATEGORY AND INTERVENTION TYPE ----
-#1  Parent Outreach
-#2 Short-Term Guidance  Conference
-#3 Individual behavior Contract
-#4 Intervention by Counseling
-#5 PPT
-#6 CBO
-#7 Substance Abuse
-#8 Indiv. Group Counseling
-#9 Community  Service
-#10 Mentoring
-#11 Mentor/Coach assignment
-#12 Counseling bullying, intimidation, harassment
-#13 Youth relationship, sexual violence
+# # --- CREATE SAMPLE RELATIONSHIP CATEGORY AND INTERVENTION TYPE ----
+# #1  Parent Outreach
+# #2 Short-Term Guidance  Conference
+# #3 Individual behavior Contract
+# #4 Intervention by Counseling
+# #5 PPT
+# #6 CBO
+# #7 Substance Abuse
+# #8 Indiv. Group Counseling
+# #9 Community  Service
+# #10 Mentoring
+# #11 Mentor/Coach assignment
+# #12 Counseling bullying, intimidation, harassment
+# #13 Youth relationship, sexual violence
 
- type6 = InterventionType.all[6]
- type8 = InterventionType.all[8]
- type13 = InterventionType.all[13]
- type10 = InterventionType.all[10]
- type4 = InterventionType.all[4]
-  type12 = InterventionType.all[12]
+#  type6 = InterventionType.all[6]
+#  type8 = InterventionType.all[8]
+#  type13 = InterventionType.all[13]
+#  type10 = InterventionType.all[10]
+#  type4 = InterventionType.all[4]
+#   type12 = InterventionType.all[12]
 
 
- category1.intervention_types << type6
- category2.intervention_types << type6 << type8
- category4.intervention_types << type4 << type8 << type12 << type13
+#  category1.intervention_types << type6
+#  category2.intervention_types << type6 << type8
+#  category4.intervention_types << type4 << type8 << type12 << type13
 
 
 

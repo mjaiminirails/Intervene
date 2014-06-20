@@ -47,13 +47,6 @@ ActiveRecord::Schema.define(version: 20140616153636) do
     t.datetime "updated_at"
   end
 
-  create_table "categories_service_providers", id: false, force: true do |t|
-    t.integer  "category_id"
-    t.integer  "service_provider_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "intervention_types", force: true do |t|
     t.string   "name"
     t.text     "description"
@@ -79,6 +72,13 @@ ActiveRecord::Schema.define(version: 20140616153636) do
     t.string   "fax"
     t.boolean  "published",        default: false
     t.text     "other"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "service_providers_subcategories", id: false, force: true do |t|
+    t.integer  "service_provider_id"
+    t.integer  "subcategory_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
