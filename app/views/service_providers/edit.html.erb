@@ -17,13 +17,16 @@
   <p>Phone Number: <%= f.text_field :work_phone %></p>
   <p>Fax: <%= f.text_field :fax %></p>
 
-  <p>Intervention Types: </p>
-  <% @all_interventiontypes.each do |type| %>
-  	<% if @selected_types.include?(type) %>
-	    <%= check_box_tag "interventiontypes[]", type.id, checked: :true %> <%= type.name%><br>
-    <% else %>
-	    <%= check_box_tag "interventiontypes[]", type.id %> <%= type.name%><br>
-		<% end %>
+  <p>Category </p>
+  <% @all_categories.each do |category| %>
+    <strong><%= category.name %></strong> -- add "select all" button here!<br>
+    <% category.subcategories.each do |subcat| %>
+    	<% if @selected_subcategories.include?(subcat) %>
+  	    <%= check_box_tag "subcategories[]", subcat.id, checked: :true %> <%= subcat.name%><br>
+      <% else %>
+  	    <%= check_box_tag "subcategories[]", subcat.id %> <%= subcat.name%><br>
+  		<% end %> 
+    <% end %>
   <% end %>
 
   <p>Other: <%= f.text_area :other %></p>
