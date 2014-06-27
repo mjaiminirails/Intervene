@@ -12,12 +12,34 @@ ActiveAdmin.register_page "Dashboard" do
 
     # Here is an example of a simple dashboard with columns and panels.
     #
+    columns do
+      column do
+        panel "Service Categories" do
+          ul do
+            ServiceProvider.all.map do |prov|
+              li link_to(prov.name, admin_service_provider_path(prov))
+            end
+          end
+        end
+      end
+    end
+
+    #   column do
+    #     panel "Info" do
+    #       para "Welcome to ActiveAdmin."
+    #     end
+    #   end
+    # end
+  end # content
+end
+
+
     # columns do
     #   column do
-    #     panel "Recent Posts" do
+    #     panel "Service Categories" do
     #       ul do
-    #         Post.recent(5).map do |post|
-    #           li link_to(post.title, admin_post_path(post))
+    #         ServiceCategory.all.map do |cat|
+    #           li link_to(cat.name, admin_service_category_path(cat))
     #         end
     #       end
     #     end
@@ -29,5 +51,3 @@ ActiveAdmin.register_page "Dashboard" do
     #     end
     #   end
     # end
-  end # content
-end
