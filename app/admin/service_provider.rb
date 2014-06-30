@@ -37,18 +37,18 @@ ActiveAdmin.register ServiceProvider do
     actions 
   end
 
-  # New and Edit form 
-  form do |f|
-    f.inputs "Service Provider Details" do
-      f.input :name
-      f.input :city
-      f.input :state
-      f.input :zip_code
-      f.input :website
-      f.input :published, as: :check_boxes
-      # f.input :service_categories, :as => :check_boxes
-    end
-    f.actions
-  end
+  # # New and Edit form 
+  # form do |f|
+  #   f.inputs "Service Provider Details" do
+  #     f.input :name
+  #     f.input :city
+  #     f.input :state
+  #     f.input :zip_code
+  #     f.input :website
+  #     f.input :published, as: :check_boxes
+  #     # f.input :service_categories, :as => :check_boxes
+  #   end
+  #   f.actions
+  # end
 
 end
