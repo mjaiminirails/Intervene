@@ -99,7 +99,7 @@ in order to see database.
 <part>id</part>
 </key>
 </table>
-<table x="905" y="519" name="intervention_types">
+<table x="595" y="407" name="intervention_types">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -113,25 +113,12 @@ in order to see database.
 <part>id</part>
 </key>
 </table>
-<table x="916" y="208" name="intervention_types_service_providers">
-<row name="service_provider_id" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
-<default>NULL</default></row>
-<row name="intervention_type_id" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
-<default>NULL</default></row>
-<key type="PRIMARY" name="">
-</key>
-</table>
-<table x="658" y="248" name="categories">
+<table x="850" y="25" name="categories">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
 <row name="name" null="1" autoincrement="0">
 <datatype>VARCHAR</datatype>
-<default>NULL</default></row>
-<row name="new field" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
 <default>NULL</default></row>
 <key type="PRIMARY" name="">
 <part>id</part>
@@ -152,10 +139,10 @@ in order to see database.
 <part>id</part>
 </key>
 </table>
-<table x="671" y="425" name="categories_intervention_types">
-<row name="category_id" null="1" autoincrement="0">
+<table x="596" y="272" name="intervention_types_subcategories">
+<row name="subcategory_id" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
-<default>NULL</default><relation table="categories" row="id" />
+<default>NULL</default><relation table="subcategories" row="id" />
 </row>
 <row name="intervention_type_id" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
@@ -164,17 +151,7 @@ in order to see database.
 <key type="PRIMARY" name="">
 </key>
 </table>
-<table x="846" y="77" name="categories_service_providers">
-<row name="category_id" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
-<default>NULL</default></row>
-<row name="service_provider_id" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
-<default>NULL</default></row>
-<key type="PRIMARY" name="">
-</key>
-</table>
-<table x="288" y="108" name="service_providers_subcategories">
+<table x="276" y="14" name="service_providers_subcategories">
 <row name="service_provider_id" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>NULL</default><relation table="service_providers" row="id" />
