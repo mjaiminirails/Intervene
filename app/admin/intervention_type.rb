@@ -2,7 +2,7 @@ ActiveAdmin.register InterventionType do
 
   menu parent: 'Variables'
 
-  remove_filter :interventiontypes_categories
+  remove_filter :interventiontypes_subcategories
 
   permit_params :name, :description
 
