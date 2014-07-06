@@ -197,8 +197,8 @@ ActiveAdmin.setup do |config|
   #
     config.namespace :admin do |admin|
       admin.build_menu :default do |menu|
-        menu.add label: "ABCDEFG", priority: 3
-        menu.add label: "Users", priority: 4c
+        menu.add label: "Variables", priority: 3
+        menu.add label: "Users", priority: 4
       end
     end
 

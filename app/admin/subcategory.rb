@@ -1,6 +1,6 @@
 ActiveAdmin.register Subcategory do
 
-  menu parent: 'ABCDEFG'
+  menu parent: 'Variables'
 
   remove_filter :subcategories_service_providers
 

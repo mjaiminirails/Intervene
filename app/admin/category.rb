@@ -1,7 +1,7 @@
 ActiveAdmin.register Category do
 
-  menu parent: 'ABCDEFG'
-  
+  menu parent: 'Variables'
+
   remove_filter :categories_intervention_types
   
   permit_params :name
