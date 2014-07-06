@@ -1,6 +1,7 @@
 ActiveAdmin.register Category do
 
-  menu priority: 3
+  menu parent: 'ABCDEFG'
+  
   remove_filter :categories_intervention_types
   
   permit_params :name
