@@ -3,6 +3,7 @@ ActiveAdmin.register Subcategory do
   menu parent: 'Variables'
 
   remove_filter :subcategories_service_providers
+  remove_filter :subcategories_intervention_types
 
   permit_params :name, :category_id
 
