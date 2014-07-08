@@ -2,6 +2,9 @@ ActiveAdmin.register ServiceProvider do
 
   menu priority: 2
 
+  scope :published do |provs| provs.where("published = true") end
+  scope :not_published do |provs| provs.where("published = false") end
+
   permit_params :name,
                 :mission,
                 :image,
@@ -23,7 +26,6 @@ ActiveAdmin.register ServiceProvider do
   # This line is needed to workaround ActiveAdmin issue with 
   #   has_and_belongs_to_many relationship
   remove_filter :serviceproviders_subcategories
-
 
   # Columns of index page
   index do
