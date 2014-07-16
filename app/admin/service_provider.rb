@@ -39,6 +39,23 @@ ActiveAdmin.register ServiceProvider do
     actions 
   end
 
+  show do |sp|
+    attributes_table do
+      rows  :id, :name, :image, :remote_image_url, :website,
+            :providers_email, :contact_person, :contact_email, 
+            :street1, :street2, :city, :state, :zip_code, 
+            :work_phone, :fax, :published, :other
+    end
+
+    panel "Subcategories" do
+      attributes_table_for "subcat" do 
+        row :name do 
+          service_provider.subcategories.map(&:name).join("<br>").html_safe
+        end
+      end
+    end
+  end
+
   # # New and Edit form 
   # form do |f|
   #   f.inputs "Service Provider Details" do
@@ -53,4 +70,11 @@ ActiveAdmin.register ServiceProvider do
   #   f.actions
   # end
 
+  # Filters on sidebar
+  filter :subcategories
+  filter :name
+  filter :city
+  filter :state
+  filter :zip_code
+  filter :published
 end
