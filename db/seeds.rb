@@ -74,6 +74,20 @@ prov2 = ServiceProvider.create( name: 'Cardinal McCloskey' ,
 												fax:'',
 												other:'')
 
+# --- Dummy Sample Subcategory + Service Provider relationship
+prov1.subcategories << Subcategory.where(name: 'Archery')
+
+prov2_subcats = [	'Individual Counseling', 
+									'Group Counseling',
+									'Youth Relationship Counseling',
+									'Mentoring']
+prov2_subcats.each do |sc|
+	prov2.subcategories << Subcategory.where(name: sc)
+end
+
+
+
+
 
 # --- CREATE SAMPLE RELATIONSHIP BETWEEN SERVICE PROVIDER AND INTERVENTION TYPE ----
 # type1 = InterventionType.all[1]
