@@ -17,13 +17,6 @@ CSV.foreach("./db/Subcategory.csv", :headers => true) do |obj|
 end
 
 # ---------- SET UP CATEGORY + SUBCATEGORY RELATIONSHIPS ----------
-academic_support = Category.all[0]
-art = Category.all[1]
-sport = Category.all[2]
-counseling = Category.all[3]
-mentoring = Category.all[4]
-job_internship = Category.all[5]
-
 all_subcats = Subcategory.all.to_a
 
 # Subcategory IDs: 1 to 6
@@ -87,6 +80,50 @@ end
 
 
 
+# --- CREATE SAMPLE RELATIONSHIP SUBCATEGORY AND INTERVENTION TYPE ----
+# ---   done by populating all subcategories (per category) with respective intervention types
+#
+# ID | Intervention Type Name
+# ------------------------------
+# 1 Parent Outreach
+# 2 Short-Term Behavioral Progress Reports
+# 3 Guidance Conference
+# 4 Development of Individual Behavior Contract
+# 5 Intervention by Counseling Staff ===> counseling, 
+# 6 Referral to PPT (Pupil Personnel Team)
+# 7 Referral to a Community Based Organization (CBO) 	====> academic_support, art
+# 8 Referral to Appropriate Substance Abuse Counseling Services
+# 9 Individual/Group Counseling ===> art, counseling
+# 10 Community Service (with Parental Consent)
+# 11 Mentoring Program
+# 12 Mentor/Coach
+# 13 Referral to Counseling Services for Bias-Based Bullying, Intimidation or Harassment ==> counseling
+# 14 Referral to Counseling Services for Youth Relationship Abuse or Sexual Violence ===> counseling
+
+cbo = InterventionType.find_by_id(7)
+counsel_staff = InterventionType.find_by_id(5)
+indiv_grp_counsel = InterventionType.find_by_id(9)
+mentoring_type = InterventionType.find_by_id(11)
+bully = InterventionType.find_by_id(13)
+abuse_violence = InterventionType.find_by_id(14)
+
+
+academic_support.subcategories.each do |scat|
+	scat.intervention_types << cbo
+end
+
+art.subcategories.each do |scat|
+	scat.intervention_types << indiv_grp_counsel
+end
+
+counseling.subcategories.each do |scat|
+	scat.intervention_types << counsel_staff << indiv_grp_counsel << bully << abuse_violence
+end
+
+mentoring.subcategories.each do |scat|
+	scat.intervention_types << mentoring_type	
+end
+
 
 
 # --- CREATE SAMPLE RELATIONSHIP BETWEEN SERVICE PROVIDER AND INTERVENTION TYPE ----
@@ -100,35 +137,5 @@ end
 
 # prov1.categories << academic_support << art
 # prov2.categories << academic_support << mentoring
-
-
-
-# # --- CREATE SAMPLE RELATIONSHIP CATEGORY AND INTERVENTION TYPE ----
-# #1  Parent Outreach
-# #2 Short-Term Guidance  Conference
-# #3 Individual behavior Contract
-# #4 Intervention by Counseling
-# #5 PPT
-# #6 CBO
-# #7 Substance Abuse
-# #8 Indiv. Group Counseling
-# #9 Community  Service
-# #10 Mentoring
-# #11 Mentor/Coach assignment
-# #12 Counseling bullying, intimidation, harassment
-# #13 Youth relationship, sexual violence
-
-#  type6 = InterventionType.all[6]
-#  type8 = InterventionType.all[8]
-#  type13 = InterventionType.all[13]
-#  type10 = InterventionType.all[10]
-#  type4 = InterventionType.all[4]
-#   type12 = InterventionType.all[12]
-
-
-#  academic_support.intervention_types << type6
-#  art.intervention_types << type6 << type8
-#  counseling.intervention_types << type4 << type8 << type12 << type13
-
 
 
