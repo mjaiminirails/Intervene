@@ -47,13 +47,18 @@ ActiveAdmin.register ServiceProvider do
             :work_phone, :fax, :published, :other
     end
 
-    panel "Subcategories" do
+    panel "Categories - Subcategories" do
       attributes_table_for "subcat" do 
-        row :name do 
-          service_provider.subcategories.map(&:name).join("<br>").html_safe
-        end
-      end
-    end
+        service_provider.uniq_categories.each do |cat|
+          row cat.name do
+            service_provider.subcategories.map do |subcat|
+              subcat.name if subcat.category == cat
+            end .compact.join("<br>").html_safe
+          end
+        end 
+      end # End of attributes_table_for
+    end # End of Cat/Subcat panel
+
   end
 
   # # New and Edit form 
