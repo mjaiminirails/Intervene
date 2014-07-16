@@ -17,6 +17,13 @@ CSV.foreach("./db/Subcategory.csv", :headers => true) do |obj|
 end
 
 # ---------- SET UP CATEGORY + SUBCATEGORY RELATIONSHIPS ----------
+academic_support = Category.all[0]
+art = Category.all[1]
+sport = Category.all[2]
+counseling = Category.all[3]
+mentoring = Category.all[4]
+job_internship = Category.all[5]
+
 all_subcats = Subcategory.all.to_a
 
 # Subcategory IDs: 1 to 6
