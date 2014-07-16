@@ -16,7 +16,34 @@ CSV.foreach("./db/Subcategory.csv", :headers => true) do |obj|
 	Subcategory.create(name: obj[0])
 end
 
-#-------- SERVICE PROVIDERS ---------
+# ---------- SET UP CATEGORY + SUBCATEGORY RELATIONSHIPS ----------
+academic_support = Category.all[0]
+art = Category.all[1]
+sport = Category.all[2]
+counseling = Category.all[3]
+mentoring = Category.all[4]
+job_internship = Category.all[5]
+
+all_subcats = Subcategory.all.to_a
+
+# Subcategory IDs: 1 to 6
+academic_support.subcategories = all_subcats.shift(6) 
+
+# Subcategory IDs: 7 to 10
+art.subcategories = all_subcats.shift(4)
+
+# Subcategory IDs: 11 to 15
+sport.subcategories = all_subcats.shift(5)
+
+# Subcategory IDs: 16 to 23
+counseling.subcategories = all_subcats.shift(8)
+
+# Subcategory IDs: 24
+mentoring.subcategories = all_subcats.shift(1)
+
+
+
+#-------- DUMMY SERVICE PROVIDERS ---------
 prov1 = ServiceProvider.create( name: 'Hidden Gems Archery',
 												mission: 'to bring archery to the masses',
 												# remote_image_url:'http://www.hiddengemsarchery.com/wp-content/uploads/2013/02/cropped-Screen-Shot-2013-02-12-at-11.45.43-AM-e1360885247611.png',
@@ -57,69 +84,9 @@ prov2 = ServiceProvider.create( name: 'Cardinal McCloskey' ,
 # prov1.intervention_types << type1 << type4
 # prov2.intervention_types << type1 << type13
 
+# prov1.categories << academic_support << art
+# prov2.categories << academic_support << mentoring
 
-
-
-# --- CREATE SAMPLE RELATIONSHIP BETWEEN SERVICE PROVIDER AND CATEGORY ----
-
-
-category1 = Category.all[0]
-category2 = Category.all[1]
-category3 = Category.all[2]
-category4 = Category.all[3]
-category5 = Category.all[4]
-
-# prov1.categories << category1 << category2
-# prov2.categories << category1 << category5
-
-# -- CREATE SUBCATEGORY ---
-#Academic Support (cat1)
-subcat1 = Subcategory.all[0]
-subcat2 = Subcategory.all[1]
-subcat3 = Subcategory.all[2]
-subcat4 = Subcategory.all[3]
-subcat5 = Subcategory.all[4]
-subcat6 = Subcategory.all[5]
-
-
-#Arts (cat 2)
-subcat7 = Subcategory.all[6]
-subcat8 = Subcategory.all[7]
-subcat9 = Subcategory.all[8]
-subcat10 = Subcategory.all[9]
-
-
-#Sports (cat 3)
-subcat11 = Subcategory.all[10]
-subcat12 = Subcategory.all[11]
-subcat13 = Subcategory.all[12]
-subcat14 = Subcategory.all[13]
-subcat15 = Subcategory.all[14]
-
-#Counseling (cat 4)
-subcat16 = Subcategory.all[15]
-subcat17 = Subcategory.all[16]
-subcat18 = Subcategory.all[17]
-subcat19 = Subcategory.all[18]
-subcat20 = Subcategory.all[19]
-subcat21 = Subcategory.all[20]
-subcat22 = Subcategory.all[21]
-subcat23 = Subcategory.all[22]
-
-#Mentoring #5
-subcat24 = Subcategory.all[23]
-
-# # -- CREATE SAMPLE RELATIONSHIP BETWEEN CATEGORY AND SUBCATEGORY --
-
-category1.subcategories << subcat1 << subcat2 << subcat3 <<subcat4 << subcat5 << subcat6
-
-category2.subcategories << subcat7 << subcat8 << subcat9 << subcat10
-
-category3.subcategories <<  subcat11 << subcat12 << subcat13 << subcat14 << subcat15
-
-category4.subcategories << subcat16 << subcat17 << subcat18 << subcat19 << subcat20 << subcat21 << subcat22 << subcat23
-
-category5.subcategories << subcat24
 
 
 # # --- CREATE SAMPLE RELATIONSHIP CATEGORY AND INTERVENTION TYPE ----
@@ -145,9 +112,9 @@ category5.subcategories << subcat24
 #   type12 = InterventionType.all[12]
 
 
-#  category1.intervention_types << type6
-#  category2.intervention_types << type6 << type8
-#  category4.intervention_types << type4 << type8 << type12 << type13
+#  academic_support.intervention_types << type6
+#  art.intervention_types << type6 << type8
+#  counseling.intervention_types << type4 << type8 << type12 << type13
 
 
 
