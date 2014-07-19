@@ -47,7 +47,7 @@ ActiveAdmin.register ServiceProvider do
             :work_phone, :fax, :published, :other
     end
 
-    panel "Categories - Subcategories" do
+    panel "Categories - Subcategories", :class => 'subcatPanel' do
       attributes_table_for "subcat" do 
         service_provider.uniq_categories.each do |cat|
           row cat.name do
@@ -59,6 +59,12 @@ ActiveAdmin.register ServiceProvider do
       end # End of attributes_table_for
     end # End of Cat/Subcat panel
 
+    ul do 
+      button_to('Edit Subcategories', 'www.google.com')
+    end
+
+    render partial: 'edit_subcat', locals: {categories: service_provider.uniq_categories,
+                                            selected_subcategories: service_provider.subcategories}
   end
 
   # # New and Edit form 
