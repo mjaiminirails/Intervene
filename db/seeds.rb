@@ -41,7 +41,13 @@ counseling.subcategories = all_subcats.shift(8)
 # Subcategory IDs: 24
 mentoring.subcategories = all_subcats.shift(1)
 
+# ------ Create Dummy Admin User if there isn't already one ------
 
+someone = AdminUser.find_by_email("admin@example.com")
+
+AdminUser.create(email: "admin@example.com", 
+ 									password: "password", 
+ 									password_confirmation: "password") unless someone
 
 #-------- DUMMY SERVICE PROVIDERS ---------
 prov1 = ServiceProvider.create( name: 'Hidden Gems Archery',
