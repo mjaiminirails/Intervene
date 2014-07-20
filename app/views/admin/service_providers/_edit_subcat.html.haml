@@ -1,0 +1,19 @@
+.panel.edit_subcat_dynamic
+  .panel_contents
+    %h3 Edit Subcategories
+    = form_tag do
+      - categories.each do |category| 
+        %br
+        %strong= category.name
+        %br
+        - category.subcategories.each do |subcat|
+          - if selected_subcategories.include?(subcat)
+            = check_box_tag "subcategories[]", subcat.id, checked: :true
+            = subcat.name
+            %br
+          - else
+            = check_box_tag "subcategories[]", subcat.id
+            = subcat.name
+            %br
+      %br
+    = submit_tag "Update subcategories for this provider"
