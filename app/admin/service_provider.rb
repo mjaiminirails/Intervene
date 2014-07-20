@@ -60,7 +60,7 @@ ActiveAdmin.register ServiceProvider do
     end # End of Cat/Subcat panel
 
     ul do 
-      button_to('Edit Subcategories', 'www.google.com')
+      button('Edit Subcategories', :class => 'edit_subcat_button')
     end
 
     render partial: 'edit_subcat', locals: {categories: service_provider.uniq_categories,
