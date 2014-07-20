@@ -1,7 +1,7 @@
 .panel.edit_subcat_dynamic
   .panel_contents
     %h3 Edit Subcategories
-    = form_tag do
+    = form_tag "#{service_provider.id}/update_subcat" do 
       - categories.each do |category| 
         %br
         %strong= category.name
@@ -16,4 +16,4 @@
             = subcat.name
             %br
       %br
-    = submit_tag "Update subcategories for this provider"
+      = submit_tag "Update subcategories for this provider"
