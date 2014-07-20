@@ -63,7 +63,7 @@ ActiveAdmin.register ServiceProvider do
       button('Edit Subcategories', :class => 'edit_subcat_button')
     end
 
-    render partial: 'edit_subcat', locals: {categories: service_provider.uniq_categories,
+    render partial: 'edit_subcat', locals: {categories: Category.all,
                                             selected_subcategories: service_provider.subcategories}
   end
 
