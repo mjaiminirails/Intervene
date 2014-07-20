@@ -49,39 +49,46 @@ ActiveAdmin.register ServiceProvider do
 
     panel "Categories - Subcategories", :class => 'subcatPanel' do
       attributes_table_for "subcat" do 
-        service_provider.uniq_categories.each do |cat|
-          row cat.name do
-            service_provider.subcategories.map do |subcat|
-              subcat.name if subcat.category == cat
-            end .compact.join("<br>").html_safe
-          end
-        end 
+        if service_provider.subcategories.empty?
+          row 'Category/Subcategory'
+        else
+          service_provider.uniq_categories.each do |cat|
+            row cat.name do
+              service_provider.subcategories.map do |subcat|
+                subcat.name if subcat.category == cat
+              end .compact.join("<br>").html_safe
+            end
+          end 
+        end # End of If-Else
       end # End of attributes_table_for
+
+      ul do 
+        button('Edit Subcategories', :class => 'edit_subcat_button')
+      end
+
     end # End of Cat/Subcat panel
 
-    ul do 
-      button('Edit Subcategories', :class => 'edit_subcat_button')
-    end
-
-    render partial: 'edit_subcat', locals: {categories: Category.all,
+    render partial: 'edit_subcat', locals: {service_provider: service_provider,
+                                            categories: Category.all,
                                             selected_subcategories: service_provider.subcategories}
   end
 
-  # # New and Edit form 
-  # form do |f|
-  #   f.inputs "Service Provider Details" do
-  #     f.input :name
-  #     f.input :city
-  #     f.input :state
-  #     f.input :zip_code
-  #     f.input :website
-  #     f.input :published, as: :check_boxes
-  #     # f.input :service_categories, :as => :check_boxes
-  #   end
-  #   f.actions
-  # end
+  # CONTROLLER
+  member_action :update_subcat, method: :post do 
+    service_provider = ServiceProvider.find(params[:id])    
+    subcategory_ids = params[:subcategories]
+    service_provider.subcategories.clear
+    if subcategory_ids
+      subcategory_ids.each do |subcat_id|
+        service_provider.subcategories << Subcategory.find_by_id(subcat_id)
+      end
+    end
+    redirect_to admin_service_provider_path(service_provider), 
+                notice: "Subcategories for this provider have been updated"
+  end
 
-  # Filters on sidebar
+
+  # FILTERS on sidebar
   filter :subcategories
   filter :name
   filter :city
