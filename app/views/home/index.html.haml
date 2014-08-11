@@ -1,0 +1,37 @@
+%br
+%br
+%form
+  .row
+    .small-8.columns.large-offset-1
+      %input#right-label{placeholder: "Search for Service Provider", type: "text"}/
+    .small-2.columns.left
+      = link_to "Search", root_path, :class => "button round expand small"  
+
+
+
+%br
+%br
+
+SERVICE PROVIDER: 
+%br
+= link_to "Index - only published providers", service_providers_path 
+%br
+= link_to "Index - all service providers", all_service_providers_path 
+%br
+= link_to "Add service provider", new_service_provider_path 
+
+%br
+%br
+INTERVENTION TYPE:
+%br
+= link_to "Index", intervention_types_path
+%br
+= link_to "Add intervention type", new_intervention_type_path
+%br
+%br
+CATEGORY:
+%br
+
+= link_to "Index", categories_path
+%br
+= link_to "Add category", new_category_path
