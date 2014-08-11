@@ -14,16 +14,13 @@
   <body>
 
     <%= render "layouts/nav" %>
+    
+    <div class="row">
+      <div class="small-10 small-offset-1 columns">
 
-    <% if notice %>
-      <p class="notice"><%= notice %></p>
-    <% end %>
-
-    <% if alert %>
-      <p class="alert"><%= alert %></p>
-    <% end %>
-      
-    <%= yield %>
+        <%= yield %>
+      </div>
+    </div>
     <%= javascript_include_tag "application" %>
   </body>
 </html>
