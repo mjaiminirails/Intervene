@@ -1,11 +1,10 @@
 %br
-%br
-%form
+%form{ action: search_providers_path, method: 'get'}
   .row
     .small-8.columns.large-offset-1
-      %input#right-label{ placeholder: "Search for Service Provider", type: "text" }
+      %input#right-label{ name: 'search', placeholder: "Search for Service Provider", type: "text" }
     .small-3.columns.left
-      = link_to "Search", root_path, :class => "button round expand small"  
+      %input.button.round.expand.small{ type: "submit" }
 %br
 %br
 
