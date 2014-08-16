@@ -72,7 +72,7 @@ class ServiceProvidersController < ApplicationController
 	end
 
   def search
-    keyword = "%" + params['search'] + "%"
+    keyword = "%" + params['search'].downcase + "%"
     
     # Search by service provider name, and subcategory name
     query = " select  distinct sprov.* \
