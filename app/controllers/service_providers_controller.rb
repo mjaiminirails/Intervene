@@ -54,13 +54,8 @@ class ServiceProvidersController < ApplicationController
           @provider.subcategories << Subcategory.find_by(id: subcategory_id)
         end
       end
-
-
-
-
 			redirect_to service_provider_path(@provider),
 					notice: "Service Provider updated successfully!"
-
 		else
 			@err = @provider.errors.full_messages
 			redirect_to edit_service_provider_path(@provider),
@@ -75,6 +70,22 @@ class ServiceProvidersController < ApplicationController
 		provider.destroy
 		redirect_to service_providers_path
 	end
+
+  def search
+    keyword = "%" + params['search'] + "%"
+    
+    # Search by service provider name, and subcategory name
+    query = " select  distinct sprov.* \
+              from    service_providers sprov \
+              join    service_providers_subcategories sps \
+                on    sps.service_provider_id = sprov.id \
+              join    subcategories scat \
+                on    scat.id = sps.subcategory_id \
+              where   lower(scat.name) like '" + keyword + "' or \
+                      lower(sprov.name) like '" + keyword + "';"
+
+    @providers = ServiceProvider.find_by_sql(query)
+  end
 
 	def provider_params
     params.require(:service_provider).
