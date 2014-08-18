@@ -74,15 +74,16 @@ class ServiceProvidersController < ApplicationController
   def search
     keyword = "%" + params['search'].downcase + "%"
     
-    # Search by service provider name, and subcategory name
+    # Search published service provider by name and subcategory name
     query = " select  distinct sprov.* \
               from    service_providers sprov \
               join    service_providers_subcategories sps \
                 on    sps.service_provider_id = sprov.id \
               join    subcategories scat \
                 on    scat.id = sps.subcategory_id \
-              where   lower(scat.name) like '" + keyword + "' or \
-                      lower(sprov.name) like '" + keyword + "';"
+              where   (lower(scat.name) like '" + keyword + "' \
+                or    lower(sprov.name) like '" + keyword + "') \
+                and   sprov.published = true;"
 
     @providers = ServiceProvider.find_by_sql(query)
   end

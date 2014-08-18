@@ -1,6 +1,8 @@
 <h1>Published Service Providers </h1>
 
-<%= link_to "Add service provider", new_service_provider_path %>
-<br><br>
+<% if app_user_signed_in? %>
+  <%= link_to "Add service provider", new_service_provider_path %>
+  <br><br>
+<% end %>
 
 <%= render "tablelistproviders" %>
