@@ -1,6 +1,6 @@
 ActiveAdmin.register School do
 
-  menu priority: 3
+  menu priority: 4
 
 
   permit_params :district,
