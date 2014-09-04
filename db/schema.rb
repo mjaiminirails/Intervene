@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140904174604) do
+ActiveRecord::Schema.define(version: 20140904181101) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -80,12 +80,12 @@ ActiveRecord::Schema.define(version: 20140904174604) do
     t.string   "street2"
     t.string   "city"
     t.string   "state"
-    t.integer  "zip_code"
-    t.integer  "phone"
-    t.integer  "fax"
     t.integer  "school_system_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "zip_code"
+    t.string   "phone"
+    t.string   "fax"
   end
 
   create_table "school_systems", force: true do |t|
@@ -96,11 +96,11 @@ ActiveRecord::Schema.define(version: 20140904174604) do
     t.string   "street2"
     t.string   "city"
     t.string   "state"
-    t.integer  "zip_code"
-    t.integer  "phone"
-    t.integer  "fax"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "zip_code"
+    t.string   "phone"
+    t.string   "fax"
   end
 
   create_table "schools", force: true do |t|
@@ -113,12 +113,12 @@ ActiveRecord::Schema.define(version: 20140904174604) do
     t.string   "street2"
     t.string   "city"
     t.string   "state"
-    t.integer  "zip_code"
     t.string   "work_phone"
     t.string   "fax"
     t.integer  "school_district_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "zip_code"
   end
 
   create_table "service_providers", force: true do |t|
