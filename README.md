@@ -8,5 +8,4 @@ rake db:migrate
 rake db:seed
 ```
 
-![GitHub Logo](/images/logo.png)
-Format: ![Alt Text](url)
+![GitHub Logo](090414_Weintervene.png)
