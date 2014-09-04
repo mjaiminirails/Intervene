@@ -83,13 +83,29 @@ prov2 = ServiceProvider.create( name: 'Cardinal McCloskey' ,
 # --- Dummy Sample Subcategory + Service Provider relationship
 prov1.subcategories << Subcategory.where(name: 'Archery')
 
-prov2_subcats = [	'Individual Counseling', 
+prov2_subcats = [	'Individual Couns"The School District of Philadelphia"ling', 
 									'Group Counseling',
 									'Youth Relationship Counseling',
 									'Mentoring']
 prov2_subcats.each do |sc|
 	prov2.subcategories << Subcategory.where(name: sc)
 end
+
+# --- Dummy Sample School
+
+School1 = School.create( district: "The School District of Philadelphia",
+                name: "Parkway Center City High School",
+                mission: "The mission of the School District of Philadelphia is to provide a high-quality education that prepares, ensures, and empowers all students to achieve their full intellectual and social potential in order to become lifelong learners and productive members",
+                website: "http://www.phila.k12.pa.us/",
+                street1: "540 N 13th St",
+                street2: "room 3",
+                city: "Philadelphia",
+                state: "PA",
+                zip_code: "19123",
+                work_phone: "215-351-7095",
+                fax: nil,
+                school_district_id: nil
+                )
 
 
 

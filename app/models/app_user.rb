@@ -4,5 +4,6 @@ class AppUser < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  belongs_to :school
+  has_one :school
+  has_one :service_provider 
 end

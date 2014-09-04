@@ -88,23 +88,24 @@ class ServiceProvidersController < ApplicationController
     @providers = ServiceProvider.find_by_sql(query)
   end
 
+  private 
+
 	def provider_params
     params.require(:service_provider).
-    	permit( :name,
-    					:mission,
-              :image,
+    	permit( :district,
+    					:name,
+              :mission,
+    					:image_url,
+    					:image_upload,
+    					:website,
     					:street1,
     					:street2,
     					:city,
     					:state,
-    					:zip_code,
-    					:website,
-    					:contact_person,
-    					:contact_email,
     					:work_phone,
     					:fax,
-    					:other,
-    					:published
+    					:school_district_id,
+    					:zip_code
     		)
   end
 
