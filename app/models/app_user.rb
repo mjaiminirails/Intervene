@@ -3,4 +3,7 @@ class AppUser < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+
+  has_one :school
+  has_one :service_provider 
 end
