@@ -8,4 +8,4 @@ rake db:migrate
 rake db:seed
 ```
 
-![GitHub Logo](090414_Weintervene.png)
+![ Database model](090414_Weintervene2.png)
