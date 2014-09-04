@@ -92,21 +92,22 @@ class ServiceProvidersController < ApplicationController
 
 	def provider_params
     params.require(:service_provider).
-    	permit( :district,
-    					:name,
+    	permit( :name,
               :mission,
-    					:image_url,
-    					:image_upload,
-    					:website,
-    					:street1,
-    					:street2,
-    					:city,
-    					:state,
-    					:work_phone,
-    					:fax,
-    					:school_district_id,
-    					:zip_code
-    		)
+              :image,
+              :street1,
+              :street2,
+              :city,
+              :state,
+              :zip_code,
+              :website,
+              :contact_person,
+              :contact_email,
+              :work_phone,
+              :fax,
+              :other,
+              :published
+        )
   end
 
 end

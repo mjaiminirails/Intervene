@@ -20,23 +20,23 @@ class SchoolsController < ApplicationController
   
   private 
 
-  def provider_params
-    params.require(:service_provider).permit( :name,
-                                              :mission,
-                                              :image,
-                                              :street1,
-                                              :street2,
-                                              :city,
-                                              :state,
-                                              :zip_code,
-                                              :website,
-                                              :contact_person,
-                                              :contact_email,
-                                              :work_phone,
-                                              :fax,
-                                              :other,
-                                              :published
-                                        )
+  def school_params
+    params.require(:school).
+      permit( :district,
+              :name,
+              :mission,
+              :image_url,
+              :image_upload,
+              :website,
+              :street1,
+              :street2,
+              :city,
+              :state,
+              :work_phone,
+              :fax,
+              :school_district_id,
+              :zip_code
+        )
   end
   
 end
