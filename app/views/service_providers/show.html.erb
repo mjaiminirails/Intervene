@@ -12,7 +12,7 @@
   <p>Website: <%= @provider.website %> </p>
   <p>Contact Person: <%= @provider.contact_person %> </p>
   <p>Contact Email: <%= @provider.contact_email %> </p>
-  <p>Phone Number: <%= @provider.work_phone %> </p>
+  <p>Phone Number: <%= @provider.phone %> </p>
   <p>Fax: <%= @provider.fax %> </p>
 
   <p>Category: </p>
@@ -22,7 +22,7 @@
          <% @subcategories.each do |subcat| %>
           <% if subcat.category == category %>
             <li> -- <%= subcat.name %> </li>
-          <% end %>    
+          <% end %>
         <% end %>
       <% end %>
     </ul>

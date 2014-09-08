@@ -15,7 +15,7 @@ class CreateServiceProviders < ActiveRecord::Migration
       t.string :city
       t.string :state
       t.string :zip_code
-      t.string :work_phone
+      t.string :phone
       t.string :fax
       t.boolean :published, default: false
       t.text :other

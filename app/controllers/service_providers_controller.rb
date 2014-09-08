@@ -73,7 +73,7 @@ class ServiceProvidersController < ApplicationController
 
   def search
     keyword = "%" + params['search'].downcase + "%"
-    
+
     # Search published service provider by name and subcategory name
     query = " select  distinct sprov.* \
               from    service_providers sprov \
@@ -88,7 +88,7 @@ class ServiceProvidersController < ApplicationController
     @providers = ServiceProvider.find_by_sql(query)
   end
 
-  private 
+  private
 
 	def provider_params
     params.require(:service_provider).
@@ -103,7 +103,7 @@ class ServiceProvidersController < ApplicationController
               :website,
               :contact_person,
               :contact_email,
-              :work_phone,
+              :phone,
               :fax,
               :other,
               :published

@@ -3,6 +3,13 @@ require 'csv'
 
 #New York State is a school system that will have many counties. You can look at:  http://data.nysed.gov/lists.php?type=county
 
+app_user = AppUser.create(email: 'user@example.com',
+    first_name: 'user',
+    last_name: 'example',
+    password: 'password',
+    password_confirmation: 'password',
+    school_id: 1
+    )
 
 system1 = SchoolSystem.create(name: "New York State Department of Education",
                     contact_person: "Yolanda Smith",
@@ -89,14 +96,10 @@ school2 = School.create(
                         school_type_id: 2
                         )
 
-app_user = AppUser.create(email: 'user@example.com',
-    first_name: 'user',
-    last_name: 'example',
-    password: 'password',
-    password_confirmation: 'password',
-    school_id: 1
-    )
-
+s1 = ServiceProvider.create( name: 'Hidden Gems Archery' , mission: 'to bring archery to the masses', image:'http://www.hiddengemsarchery.com/wp-content/uploads/2013/02/cropped-Screen-Shot-2013-02-12-at-11.45.43-AM-e1360885247611.png', remote_image_url: '',
+    website: 'http://www.hiddengemsarchery.com/',
+    general_email: 'info@hiddengems.com ',
+    contact_person: 'q', contact_email:'q@hga@aol.com', title: 'intake person', street1: '180 Remson Street', street2: '', city:'Bronx', state:'NY', zip_code:'10469', phone:'254-247-4477', fax:'', published:'true',other:'Great place to have fun.')
 
 
 
@@ -121,6 +124,19 @@ school_type3 = SchoolType.create(name: "Magnet")
 school_type4 = SchoolType.create(name: "Charter")
 
 
+#student
+stud1 = Student.create(image_url: '1.jpeg', first_name: 'John', last_name: 'Doe', identification_number: '123456789',  date_of_birth: '12/13/99', school_id:'1', email: 'student@gmail.com', street1: ' 123 Main Street', street2: '', city: 'Bronx', zip_code: '10469', phone:'718-231-1000', cell_phone:'646-1000',  counselor: 'Ms.Nice', cohort: '2018', grade_level: '9', gender:'male')
+
+
+c1 = Category.create(name: 'sports')
+sc1 = Subcategory.create(name: 'archery')
+
+c1.subcategories << sc1
+s1.subcategories << Subcategory.all[0]
+
+
 #referral
-r1 = Referral.create( comment: 'Student needs some help with anger issues', app_user_id: '4' , student_id: '2', school_id: '1' )
+r1 = Referral.create( comment: 'Student needs some help with anger issues', app_user_id: '1' , student_id: '1', school_id: '1' )
+ r1.service_providers << ServiceProvider.all[0]
+
 
