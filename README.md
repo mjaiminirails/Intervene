@@ -9,11 +9,7 @@ Steps to Dermatobia and Jason to have a successful start:
 ```
 Read the 'vendor/associations.rb' file to understand relationships.
 
-####When you want to use pry, you have to type the following to make it pick up your environment.
-```
-pry -r ./config/environment
 
-```
 
 ###Sarah wrote this for anyone else who wants to join
 Initial setup
@@ -27,10 +23,10 @@ rake db:seed
 ```
 
 
-### Database Model on 090714
+#### Database Model on 090714
 ![Database model on 090714](090714_Intervene.png)
 
 
-### Model on 090414
+#### Model on 090414
 ![ Database model](090414_Weintervene2.png)
 

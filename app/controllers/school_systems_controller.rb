@@ -21,16 +21,19 @@ private
 
   def system_params
     params.require(:school_system).
-      permit( :name,
-              :street1,
-              :street2,
-              :city,
-              :state,
-              :zip_code,
-              :contact_person,
-              :contact_email,
-              :phone,
-              :fax
+      permit(
+      :name,
+      :contact_person,
+      :contact_email,
+      :website,
+      :title,
+      :street1,
+      :street2,
+      :city,
+      :state,
+      :zip_code,
+      :phone,
+      :fax
         )
   end
 

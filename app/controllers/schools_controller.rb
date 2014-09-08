@@ -1,9 +1,9 @@
 class SchoolsController < ApplicationController
 
   def index
-    @schools = School.all 
+    @schools = School.all
   end
-  
+
   def new
     @school = School.new
   end
@@ -14,8 +14,8 @@ class SchoolsController < ApplicationController
       redirect_to root_url
     end
   end
-  
-  private 
+
+  private
 
   def school_params
     params.require(:school).
@@ -29,11 +29,14 @@ class SchoolsController < ApplicationController
               :street2,
               :city,
               :state,
-              :work_phone,
+              :phone,
+              :zip_code
               :fax,
               :school_district_id,
-              :zip_code
+              :grade_configuration_id,
+              :school_type_id,
+              :grade_type_id
         )
   end
-  
+
 end

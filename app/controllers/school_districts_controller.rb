@@ -22,18 +22,20 @@ private
 
   def district_params
     params.require(:school_district).
-      permit( :name,
-              :street1,
-              :street2,
-              :city,
-              :state,
-              :zip_code,
-              :contact_person,
-              :contact_email,
-              :phone,
-              :fax,
-              :school_system_id
-        )
+      permit(
+      :name,
+      :contact_person,
+      :contact_email,
+      :website,
+      :title,
+      :street1,
+      :street2,
+      :city,
+      :state,
+      :zip_code,
+      :phone,
+      :fax
+      )
   end
 
 end

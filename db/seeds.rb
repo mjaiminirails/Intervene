@@ -90,8 +90,12 @@ school2 = School.create(
                         )
 
 app_user = AppUser.create(email: 'user@example.com',
+    first_name: 'user',
+    last_name: 'example',
     password: 'password',
-    password_confirmation: 'password')
+    password_confirmation: 'password',
+    school_id: 1
+    )
 
 
 #grade configuration; create a table of values
