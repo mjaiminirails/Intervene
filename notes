@@ -1,3 +1,7 @@
+When you want to use pry, you have to type the following to make it pick up your environment.
+pry -r ./config/environment
+
+
 
 This is when your server doesn't want to die.
 $ lsof -wni tcp:3000

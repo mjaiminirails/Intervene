@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 
   get '/service_providers/search', to: 'service_providers#search', as: 'search_providers'
   get '/all_service_providers', to: 'service_providers#allindex'
+
   resources :service_providers
 
   resources :intervention_types
