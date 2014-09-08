@@ -14,9 +14,9 @@ class CreateStudents < ActiveRecord::Migration
       t.string :street2
       t.string :city
       t.string :state
-      t.integer :zip_code
-      t.integer :phone
-      t.integer :cell_phone
+      t.string :zip_code
+      t.string :phone
+      t.string :cell_phone
       t.string :counselor
       t.string :grade_level
       t.string :offical_class

@@ -10,9 +10,9 @@ class CreateSchoolSystems < ActiveRecord::Migration
       t.string :street2
       t.string :city
       t.string :state
-      t.integer :zip_code
-      t.integer :phone
-      t.integer :fax
+      t.string :zip_code
+      t.string :phone
+      t.string :fax
 
       t.timestamps
     end

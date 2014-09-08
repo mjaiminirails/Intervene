@@ -12,7 +12,7 @@ system1 = SchoolSystem.create(name: "New York State Department of Education",
                     city: "Bx",
                     state: "NY",
                     zip_code: "11201",
-                    phone: "2123456789"
+                    phone: "2123456789",
                     fax: "2123456789"
                     )
 
@@ -22,13 +22,13 @@ county1 = SchoolCounty.create(name: "Bronx County",
                     contact_email: "ysmith@bxcounty.com",
                     title: "director",
                     street1: "100 Lane",
-                    streate2: "Rm 104",
+                    street2: "Rm 104",
                     city: "Bx",
                     state: "NY",
                     zip_code: "11201",
                     phone: "7183456789",
-                    fax: "7183456789"
-                    webste: "bxcounty.com"
+                    fax: "7183456789",
+                    website: "bxcounty.com",
                     school_system_id: 1)
 
 #Districts will belong to a county and have many schools. You can look at: http://data.nysed.gov/profile.php?county=32
@@ -42,8 +42,8 @@ district1 = SchoolDistrict.create(name: 'NEW YORK CITY GEOGRAPHIC DISTRICT #10',
                     state: "NY",
                     zip_code: "11201",
                     phone: "2123456789",
-                    fax: "2123456789"
-                    webste: "nycdoe.com",
+                    fax: "2123456789",
+                    website: "nycdoe.com",
                     school_county_id: '1' )
 
 
@@ -61,11 +61,13 @@ school1 = School.create(
                     state: "NY",
                     zip_code: "11201",
                     phone: "2123456789",
-                    fax: "2123456789"
-                    webste: "dwchs.com"
+                    fax: "2123456789",
+                    website: "dwchs.com",
 
               school_district_id: 1,
-              school_type_id: 1
+              grade_configuration_id: 1,
+              school_type_id: 1,
+              grade_type_id: 1
               )
 
 # --- Dummy Sample School
@@ -79,7 +81,7 @@ school2 = School.create(
                         city: "Philadelphia",
                         state: "PA",
                         zip_code: "19123",
-                        work_phone: "215-351-7095",
+                        phone: "215-351-7095",
                         fax: nil,
                         school_district_id: 1,
                         school_type_id: 2
