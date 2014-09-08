@@ -9,7 +9,7 @@ Steps to Dermatobia and Jason to have a successful start:
 ```
 Read the 'vendore/associations.rb' file to understand relationships.
 
-##Sarah wrote this for anyone else who wants to join
+###Sarah wrote this for anyone else who wants to join
 Initial setup
 
 run
@@ -21,10 +21,10 @@ rake db:seed
 ```
 
 
-# Database Model on 090714
+### Database Model on 090714
 ![Database model on 090714](090714_Intervene.png)
 
 
-# Model on 090414
+### Model on 090414
 ![ Database model](090414_Weintervene2.png)
 
