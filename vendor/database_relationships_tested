@@ -1,0 +1,15 @@
+To test out,
+$ rails c
+
+Copy the content after the prompt
+
+$ SchoolDistrict.first.school_county.name
+
+If you put:
+ pry(main)> SchoolDistrict.first.school_county_id.name
+
+ You will get
+ NoMethodError: undefined method `name' for 1:Fixnum
+
+ Because id is just an integer, you need to call the object(?) and then ask for the properties that are in the object
+
