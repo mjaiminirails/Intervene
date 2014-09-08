@@ -1,9 +1,6 @@
 Controllers needs to have strong paramters before hand.
 
 
-
-
-
 To test out,
 $ rails c
 
@@ -24,4 +21,4 @@ If you put:
  pry(main)> SchoolCounty.first.school_system
  pry(main)>  Referral.all[0].school
 
- not working:
+

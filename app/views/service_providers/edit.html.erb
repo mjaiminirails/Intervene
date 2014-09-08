@@ -14,7 +14,7 @@
   <p>Website: <%= f.text_field :website %></p>
   <p>Contact Person: <%= f.text_field :contact_person %></p>
   <p>Contact Email: <%= f.text_field :contact_email %></p>
-  <p>Phone Number: <%= f.text_field :work_phone %></p>
+  <p>Phone Number: <%= f.text_field :phone %></p>
   <p>Fax: <%= f.text_field :fax %></p>
 
   <p>Category </p>
@@ -25,7 +25,7 @@
   	    <%= check_box_tag "subcategories[]", subcat.id, checked: :true %> <%= subcat.name%><br>
       <% else %>
   	    <%= check_box_tag "subcategories[]", subcat.id %> <%= subcat.name%><br>
-  		<% end %> 
+  		<% end %>
     <% end %>
   <% end %>
 

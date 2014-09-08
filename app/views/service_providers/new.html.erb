@@ -25,7 +25,7 @@
   <p>Website: <%= f.text_field :website, placeholder: "Website" %></p>
   <p>Contact Person: <%= f.text_field :contact_person, placeholder: "Contact Person" %></p>
   <p>Contact Email: <%= f.text_field :contact_email, placeholder: "Contact Email" %></p>
-  <p>Phone Number: <%= f.text_field :work_phone, placeholder: "Phone Number" %></p>
+  <p>Phone Number: <%= f.text_field :phone, placeholder: "Phone Number" %></p>
   <p>Fax: <%= f.text_field :fax, placeholder: "Fax" %></p>
 
   <p>Other: <%= f.text_area :other, placeholder: "Other" %></p>
@@ -35,10 +35,10 @@
     <% Category.all.each do |category| %>
       <%= category.name%> </br>
       <% category.subcategories.each do |subcategory| %>
-        <%= check_box_tag "[subcategories][]",  
-                          subcategory.id, 
-                          false, 
-                          :id => "subcategory_id_#{subcategory.id}" %> 
+        <%= check_box_tag "[subcategories][]",
+                          subcategory.id,
+                          false,
+                          :id => "subcategory_id_#{subcategory.id}" %>
         <%= subcategory.name%> <br>
       <% end %>
     <% end %></br>
