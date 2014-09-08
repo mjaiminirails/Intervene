@@ -6,7 +6,7 @@ Steps to Dermatobia and Jason to have a successful start:
 5. rake db:migrate
 6. rake db:seed
 
-Read the associations.rb file to understand relationships.
+Read the 'vendore/associations.rb' file to understand relationships.
 
 #Sarah wrote this for anyone else who wants to join
 Initial setup
@@ -21,7 +21,7 @@ rake db:seed
 
 
 # Database Model on 090714
-![Database model on 090714](090714_Intervene2.png)
+![Database model on 090714](090714_Intervene.png)
 
 
 # Model on 090414
