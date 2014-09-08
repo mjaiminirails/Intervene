@@ -98,6 +98,8 @@ app_user = AppUser.create(email: 'user@example.com',
     )
 
 
+
+
 #grade configuration; create a table of values
 grade1 = GradeConfiguration.create(name:"9"
                                    )
@@ -118,4 +120,7 @@ school_type2 = SchoolType.create(name: "Private")
 school_type3 = SchoolType.create(name: "Magnet")
 school_type4 = SchoolType.create(name: "Charter")
 
+
+#referral
+r1 = Referral.create( comment: 'Student needs some help with anger issues', app_user_id: '4' , student_id: '2', school_id: '1' )
 

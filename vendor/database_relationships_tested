@@ -22,6 +22,6 @@ If you put:
  pry(main)> SchoolSystem.first
  pry(main)> SchoolCounty.first
  pry(main)> SchoolCounty.first.school_system
+ pry(main)>  Referral.all[0].school
 
  not working:
- AppUser.all[0].school

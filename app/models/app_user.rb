@@ -6,6 +6,7 @@ class AppUser < ActiveRecord::Base
 
   belongs_to :school
   belongs_to :service_provider
-has_and_belongs_to_many :roles
+  has_many :referrals
+  has_and_belongs_to_many :roles
 
 end
