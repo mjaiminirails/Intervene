@@ -1,8 +1,5 @@
 class SchoolsController < ApplicationController
 
-  has_one :district
-  belongs_to :app_user
-
   def index
     @schools = School.all 
   end

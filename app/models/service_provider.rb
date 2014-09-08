@@ -1,5 +1,6 @@
 class ServiceProvider < ActiveRecord::Base
   has_and_belongs_to_many :subcategories
+  has_and_belongs_to_many :referrals
 	validates :name, :presence => true
 
   mount_uploader :image, ImageUploader
@@ -11,3 +12,4 @@ class ServiceProvider < ActiveRecord::Base
   	cats.uniq
   end
 end
+

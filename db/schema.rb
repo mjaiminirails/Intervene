@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140904195234) do
+ActiveRecord::Schema.define(version: 20140907222109) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,6 +37,11 @@ ActiveRecord::Schema.define(version: 20140904195234) do
   create_table "app_users", force: true do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
+    t.string   "user_name"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.integer  "service_provider_id"
+    t.integer  "school_id"
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -47,20 +52,62 @@ ActiveRecord::Schema.define(version: 20140904195234) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "user_name"
-    t.string   "first_name"
-    t.string   "last_name"
-    t.integer  "school_id"
-    t.integer  "service_provider_id"
   end
 
   add_index "app_users", ["email"], name: "index_app_users_on_email", unique: true, using: :btree
   add_index "app_users", ["reset_password_token"], name: "index_app_users_on_reset_password_token", unique: true, using: :btree
 
+  create_table "app_users_roles", id: false, force: true do |t|
+    t.integer "role_id"
+    t.integer "app_user_id"
+  end
+
   create_table "categories", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "grade_configurations", force: true do |t|
+    t.string   "name"
+    t.integer  "school_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "grade_types", force: true do |t|
+    t.string   "name"
+    t.integer  "school_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "guardian_roles", force: true do |t|
+    t.string   "name"
+    t.integer  "guardian_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "guardians", force: true do |t|
+    t.string "first_name"
+    t.string "middle_name"
+    t.string "last_name"
+    t.string "suffix"
+    t.string "email"
+    t.string "street1"
+    t.string "street2"
+    t.string "city"
+    t.string "state"
+    t.string "zip_code"
+    t.string "work_phone"
+    t.string "cell_phone"
+    t.text   "note"
+  end
+
+  create_table "guardians_students", id: false, force: true do |t|
+    t.integer "guardians_id"
+    t.integer "students_id"
   end
 
   create_table "intervention_types", force: true do |t|
@@ -77,65 +124,117 @@ ActiveRecord::Schema.define(version: 20140904195234) do
     t.datetime "updated_at"
   end
 
-  create_table "school_districts", force: true do |t|
+  create_table "referrals", force: true do |t|
+    t.string   "comment"
+    t.integer  "app_user_id"
+    t.integer  "student_id"
+    t.integer  "school_id",   null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "referrals_service_providers", id: false, force: true do |t|
+    t.integer "referral_id"
+    t.integer "service_provider_id"
+  end
+
+  create_table "roles", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "school_counties", force: true do |t|
     t.string   "name"
     t.string   "contact_person"
     t.string   "contact_email"
+    t.string   "title"
     t.string   "street1"
     t.string   "street2"
     t.string   "city"
     t.string   "state"
+    t.integer  "zip_code"
+    t.integer  "phone"
+    t.integer  "fax"
+    t.string   "website"
     t.integer  "school_system_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "zip_code"
-    t.string   "phone"
-    t.string   "fax"
+  end
+
+  create_table "school_districts", force: true do |t|
+    t.string   "name"
+    t.string   "contact_person"
+    t.string   "contact_email"
+    t.string   "title"
+    t.string   "street1"
+    t.string   "street2"
+    t.string   "city"
+    t.string   "state"
+    t.integer  "zip_code"
+    t.integer  "phone"
+    t.integer  "fax"
+    t.string   "website"
+    t.integer  "school_county_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "school_systems", force: true do |t|
     t.string   "name"
     t.string   "contact_person"
     t.string   "contact_email"
+    t.string   "website"
+    t.string   "title"
     t.string   "street1"
     t.string   "street2"
     t.string   "city"
     t.string   "state"
+    t.integer  "zip_code"
+    t.integer  "phone"
+    t.integer  "fax"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "zip_code"
-    t.string   "phone"
-    t.string   "fax"
+  end
+
+  create_table "school_types", force: true do |t|
+    t.string   "name"
+    t.integer  "school_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "schools", force: true do |t|
-    t.string   "district"
     t.string   "name"
+    t.string   "principal"
     t.string   "mission"
     t.string   "image_url"
-    t.string   "website"
+    t.string   "contact_person"
+    t.string   "contact_email"
+    t.string   "title"
     t.string   "street1"
     t.string   "street2"
     t.string   "city"
     t.string   "state"
-    t.string   "work_phone"
-    t.string   "fax"
+    t.integer  "zip_code"
+    t.integer  "phone"
+    t.integer  "fax"
+    t.string   "website"
     t.integer  "school_district_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "zip_code"
-    t.string   "image_upload"
   end
 
   create_table "service_providers", force: true do |t|
     t.string   "name"
-    t.string   "mission"
+    t.text     "mission"
     t.string   "image"
     t.string   "remote_image_url"
     t.string   "website"
-    t.string   "providers_email"
+    t.string   "general_email"
     t.string   "contact_person"
     t.string   "contact_email"
+    t.string   "title"
     t.string   "street1"
     t.string   "street2"
     t.string   "city"
@@ -152,6 +251,34 @@ ActiveRecord::Schema.define(version: 20140904195234) do
   create_table "service_providers_subcategories", id: false, force: true do |t|
     t.integer  "service_provider_id"
     t.integer  "subcategory_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "students", force: true do |t|
+    t.string   "first_name"
+    t.string   "middle_name"
+    t.string   "last_name"
+    t.string   "suffix"
+    t.string   "identification_number"
+    t.string   "date_of_birth"
+    t.string   "image_url"
+    t.string   "remote_image_url"
+    t.string   "email"
+    t.string   "street1"
+    t.string   "street2"
+    t.string   "city"
+    t.string   "state"
+    t.integer  "zip_code"
+    t.integer  "phone"
+    t.integer  "cell_phone"
+    t.string   "counselor"
+    t.string   "grade_level"
+    t.string   "offical_class"
+    t.string   "cohort"
+    t.string   "gender"
+    t.integer  "school_id"
+    t.integer  "referral_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
