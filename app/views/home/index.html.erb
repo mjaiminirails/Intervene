@@ -1,0 +1,44 @@
+
+<div class="container body">
+<br>
+<div class="container search">
+<form action="<%= search_providers_path %>" method="get">
+  <div class="row">
+    <div class="small-8 columns large-offset-1">
+      <input id="right-label" name="search" placeholder="Search for Service Provider" type="text"></input>
+    </div>
+    <div class="small-3 columns left">
+      <input class="button round expand small" type="submit"></input>
+    </div> <!-- small columns left -->
+  </div> <!-- row ends -->
+</form> <!-- form ends -->
+</div> <!-- container search ends -->
+
+
+<br>
+
+<div class="container service_providers " >
+<div class="row">
+<div class="large-8 columns">
+<% if app_user_signed_in? %>
+  <%= link_to "Add service provider", new_service_provider_path %>
+<% end %>
+<%= render "service_providers/tablelistproviders"%>
+</div>
+
+  <div class="large-3 columns">
+  <div>
+     Here is where mylist and myreferrals go
+  </div>
+  <div>
+     Here is where filter options go
+  </div>
+
+  </div>
+</div> <!-- div container row ends -->
+
+ </div> <!-- div container service_providers -->
+</div>
+
+
+</div> <!-- end container-body-->

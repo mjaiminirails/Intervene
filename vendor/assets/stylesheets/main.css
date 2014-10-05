@@ -1,0 +1,7 @@
+footer div {
+  border-right: 5px solid #ff0000;
+}
+
+footer div:last-child {
+  border-right: 0;
+}

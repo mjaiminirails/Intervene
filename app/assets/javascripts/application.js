@@ -13,5 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require foundation
+//= main.js
 //= require_tree .
-$(function(){ $(document).foundation(); });
+
+

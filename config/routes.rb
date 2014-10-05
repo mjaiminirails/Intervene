@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'home#index'
 
+  get '/trial', to: 'home#trial'
   get '/service_providers/search', to: 'service_providers#search', as: 'search_providers'
   get '/all_service_providers', to: 'service_providers#allindex'
 

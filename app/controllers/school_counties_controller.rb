@@ -2,7 +2,6 @@ class SchoolCountiesController < ApplicationController
 
 
   private
-
   def county_params
     params.require(:school_county).
       permit(

@@ -14,13 +14,32 @@
   <body>
 
     <%= render "layouts/nav" %>
-    
+
     <div class="row">
       <div class="small-10 small-offset-1 columns">
 
         <%= yield %>
       </div>
     </div>
+
+ <footer class="row">
+    <div class="large-12 columns">
+      <hr>
+
+      <div class="row">
+        <div class="large-6 columns">
+          <p>Content</p>
+        </div>
+
+
+        <div class="large-6 columns">
+          <p>Content</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+</div>
+
     <%= javascript_include_tag "application" %>
   </body>
 </html>

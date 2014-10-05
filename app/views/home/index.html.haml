@@ -1,3 +1,4 @@
+
 %br
 %form{ action: search_providers_path, method: 'get'}
   .row
@@ -8,8 +9,11 @@
 %br
 %br
 
-= link_to "Browse through all service providers", service_providers_path 
+= link_to "Browse through all service providers", service_providers_path
 
 - if app_user_signed_in?
   %br
-  = link_to "Add service provider", new_service_provider_path 
+  = link_to "Add service provider", new_service_provider_path
+
+  = render "service_providers/tablelistproviders"
+
