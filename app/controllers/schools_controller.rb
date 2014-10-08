@@ -30,7 +30,7 @@ class SchoolsController < ApplicationController
               :city,
               :state,
               :phone,
-              :zip_code
+              :zip_code,
               :fax,
               :school_district_id,
               :grade_configuration_id,
