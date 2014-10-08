@@ -1,5 +1,5 @@
 <div class="row main-content-section">
-  <% @providers.each do |provider| %>
+  <% @providers.each_with_index do |provider, index| %>
     <div class="large-6 columns">
       <div class="row middle-logo-row">
         <a href="<%= service_provider_path(provider) %>" class="view-more-i">i</a>
@@ -13,6 +13,7 @@
         </div>
       </div>
     </div>
+    <%= "<div class='clearfix'></div>".html_safe if (index+1)%2==0 %>
   <% end %>  
 </div>
 
