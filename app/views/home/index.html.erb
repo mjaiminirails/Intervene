@@ -1,44 +1,102 @@
-
 <div class="container body">
-<br>
-<div class="container search">
-<form action="<%= search_providers_path %>" method="get">
-  <div class="row">
-    <div class="small-8 columns large-offset-1">
-      <input id="right-label" name="search" placeholder="Search for Service Provider" type="text"></input>
+  <br>
+  <div class="container search">
+    <form action="<%= search_providers_path %>" method="get">
+      <div class="row">
+        <div class="small-12 medium-8 large-8 columns large-offset-1">
+          <input id="right-label" name="search" placeholder="Search for Service Provider" type="text"></input>
+        </div>
+        <div class="small-12  medium-3 large-3 medium-3 columns left">
+          <input class="button round expand small" type="submit"></input>
+        </div> <!-- small columns left -->
+      </div> <!-- row ends -->
+    </form> <!-- form ends -->
+  </div> <!-- container search ends -->
+
+
+  <br>
+  <div class="container">
+    <div class="row right-margin-none">
+      <div class="large-8 columns">
+        <ul class="list">
+          <% @categories.each do |category|%>
+            <li>
+              <%= link_to category.name, "#" %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+      <div class="large-4 columns">
+        <div class="row row-spacing left-margin">
+          <% if app_user_signed_in? %>
+            <div class="large-5 medium-4 columns my-list-right">
+              <%= link_to "My List", "#" %>
+            </div>
+            <div class="large-5 medium-4 columns my-list-right2">
+              <%= link_to "My Referrals", "#" %>
+            </div>
+          <% else %>
+            <div class="large-5 medium-4 columns my-list-right">
+               My List
+            </div>
+            <div class="large-5 medium-4 columns my-list-right2">
+              Referrals
+            </div>
+          <% end %> 
+        </div>
+      </div>
+    </div> <!-- div container row ends -->
+  </div> <!-- div container service_providers -->
+
+  <div class="container">
+    <div class="row middle-row">
+      <div class="large-8 columns middle-scroll">
+        <%= render "service_providers/tablelistproviders"%>
+      </div>
+      
+      <div class="large-4 columns filter-option">
+        <fieldset>
+          <legend>Filter Options</legend>
+          <label> Zip code: -</label>
+          <label> Miles away</label>
+          <span><input type="radio" value="" checked></span>
+          <span>1 mile </span> 
+          <br>
+          <span><input type="radio" value=""></span>
+          <span>2 miles</span> 
+          <br>
+          <span><input type="radio" value=""></span>
+          <span>3 miles</span> 
+          <br>
+          <label class="text-center">-Or-</label>
+          <span><input type="checkbox" value=""></span>
+          <span>Bronx</span> 
+          <br>
+          <span><input type="checkbox" value=""></span>
+          <span>Brooklyn</span> 
+          <br>
+          <span><input type="checkbox" value=""></span>
+          <span>Manhattan</span> 
+          <br>
+          <span><input type="checkbox" value=""></span>
+          <span>Queens</span> 
+          <br>
+          <span><input type="checkbox" value=""></span>
+          <span>Staten Island</span> 
+        </fieldset>
+      </div>
+    </div> <!-- div container row ends -->
+  </div> <!-- div container service_providers -->
+  <div class="container">
+    <div class="row middle-row">
+      <div class="large-8 columns">
+        <% if app_user_signed_in? %>
+          <div class="row text-right">
+            <span class="text-right"><input type="submit" value="Share" class="button round small"></span>
+            <span class="text-right"><input type="submit" value="Add to my list" class="button round small"></span>
+          </div>
+        <% end %>
+      </div>
     </div>
-    <div class="small-3 columns left">
-      <input class="button round expand small" type="submit"></input>
-    </div> <!-- small columns left -->
-  </div> <!-- row ends -->
-</form> <!-- form ends -->
-</div> <!-- container search ends -->
-
-
-<br>
-
-<div class="container service_providers " >
-<div class="row">
-<div class="large-8 columns">
-<% if app_user_signed_in? %>
-  <%= link_to "Add service provider", new_service_provider_path %>
-<% end %>
-<%= render "service_providers/tablelistproviders"%>
-</div>
-
-  <div class="large-3 columns">
-  <div>
-     Here is where mylist and myreferrals go
   </div>
-  <div>
-     Here is where filter options go
-  </div>
-
-  </div>
-</div> <!-- div container row ends -->
-
- </div> <!-- div container service_providers -->
-</div>
-
-
 </div> <!-- end container-body-->

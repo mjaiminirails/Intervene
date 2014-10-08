@@ -1,22 +1,18 @@
-<table>
-	<tr>
-		<td>ID</td>
-		<td> Image </td>
-		<td>Name</td>
-		<td>Website</td>
-		<td>Edit</td>
-		<td>Delete</td>
-	</tr>
-	<% @providers.each do |provider| %>
-	<tr>
-		<td><%= provider.id %></td>
-		<td> <%=image_tag provider.image_url(:thumb).to_s %> </td>
-		<td><%= link_to provider.name, service_provider_path(provider) %></td>
-		<td><%= provider.website%></td>
-		<td><%= link_to "Edit", edit_service_provider_path(provider) %></td>
-		<td><%= link_to "Delete", service_provider_path(provider),
-															method: :delete,
-															data: { confirm: "Are you sure?"} %></td>
-	</tr>
-	<% end %>
-</table>
+<div class="row main-content-section">
+  <% @providers.each do |provider| %>
+    <div class="large-6 columns">
+      <div class="row middle-logo-row">
+        <a href="<%= service_provider_path(provider) %>" class="view-more-i">i</a>
+        <div class="col-logo">
+          <div class="large-4 columns"><%=image_tag provider.image_url(:thumb).to_s %></div>
+          <div class="large-8 columns">
+            <p>Name : <%= link_to provider.name, service_provider_path(provider) %></p>
+            <p>Mission : <%= provider.mission.truncate(20)%></p>
+            <p>State : <%= provider.state%></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>  
+</div>
+
